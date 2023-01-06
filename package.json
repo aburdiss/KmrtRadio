@@ -31,6 +31,48 @@
     "metro-react-native-babel-preset": "0.72.3",
     "react-test-renderer": "18.1.0"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "@react-native-community"
+    ],
+    "ignorePatterns": [
+      "jest/*",
+      "*.test.js"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "eqeqeq": "off",
+      "consistent-this": "off"
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "printWidth": 80,
+    "arrowParens": "always",
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": true
+  },
   "jest": {
     "preset": "react-native"
   }
