@@ -1,5 +1,12 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
+import TrackPlayer from 'react-native-track-player';
+
+import Loading from './src/Screens/Loading/Loading';
+import Home from './src/Screens/Home/Home';
+
+import { getTracks } from './src/utils/getTracks';
+import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
 
 /**
  * @function App
@@ -17,9 +24,30 @@ import { Text, View } from 'react-native';
  * @version 0.0.1
  */
 export default function App() {
-  return (
-    <View>
-      <Text>Kmart Radio</Text>
-    </View>
-  );
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
+
+  useEffect(() => {
+    async function setup() {
+      let isSetup = await setupPlayer();
+
+      await playbackService();
+
+      const tracks = getTracks();
+
+      const queue = await TrackPlayer.getQueue();
+      if (isSetup && queue.length <= 0) {
+        await addTracks(tracks);
+      }
+
+      setIsPlayerReady(isSetup);
+    }
+
+    setup();
+  }, []);
+
+  if (!isPlayerReady) {
+    return <Loading />;
+  }
+
+  return <Home />;
 }
