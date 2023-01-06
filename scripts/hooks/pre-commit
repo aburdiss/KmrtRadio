@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# pre-commit hook for KmartRadio
+# Created by Alexander Burdiss on 1/6/23
+# Version 1.0.0
+#
+
+set -e
+
+npm run check-packages
+
+npm run prettier
+
+npm run lint
+
+npm run test

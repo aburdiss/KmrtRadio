@@ -3,11 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prepare": "git config core.hooksPath ./scripts/hooks",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "reset": "./scripts/reset.sh",
+    "gen": "./scripts/generateComponent.sh",
+    "check-packages": "node ./scripts/checkForMaliciousPackages.js",
+    "prettier": "prettier --check src",
+    "prettier:write": "prettier --write src"
   },
   "dependencies": {
     "react": "18.1.0",
@@ -20,6 +27,7 @@
     "babel-jest": "^26.6.3",
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
+    "prettier": "^2.7.1",
     "metro-react-native-babel-preset": "0.72.3",
     "react-test-renderer": "18.1.0"
   },
