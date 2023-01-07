@@ -36,6 +36,7 @@ export async function setupPlayer() {
       progressUpdateEventInterval: 2,
     });
 
+    await TrackPlayer.setRepeatMode(RepeatMode.Queue);
     isSetup = true;
   } finally {
     return isSetup;
@@ -44,7 +45,6 @@ export async function setupPlayer() {
 
 export async function addTracks(tracks) {
   await TrackPlayer.add(tracks);
-  await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 }
 
 export async function playbackService() {

@@ -32,7 +32,7 @@ export default function App() {
 
       await playbackService();
 
-      const tracks = getTracks();
+      const tracks = getTracks('March');
 
       const queue = await TrackPlayer.getQueue();
       if (isSetup && queue.length <= 0) {

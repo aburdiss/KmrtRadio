@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Button } from 'react-native';
-import TrackPlayer from 'react-native-track-player';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Player from '../../Components/Player/Player';
 
 export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
-      <Button title="Play" color="#777" onPress={() => TrackPlayer.play()} />
+      <Player />
     </SafeAreaView>
   );
 }
@@ -15,6 +15,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#112',
   },
 });
