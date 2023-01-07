@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-
+import * as RNLocalize from 'react-native-localize';
 import TrackPlayer from 'react-native-track-player';
 
 import Loading from './src/Screens/Loading/Loading';
 import Home from './src/Screens/Home/Home';
 
+import { setI18nConfig } from './src/translations/TranslationModel';
+
 import { getTracks } from './src/utils/getTracks';
 import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
+
+setI18nConfig();
 
 /**
  * @function App
@@ -25,6 +29,21 @@ import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
  */
 export default function App() {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
+
+  useEffect(() => {
+    RNLocalize.addEventListener('change', handleLocalizationChange);
+    return () => {
+      RNLocalize.removeEventListener('change', handleLocalizationChange);
+    };
+  }, []);
+
+  const handleLocalizationChange = () => {
+    setI18nConfig()
+      .then(() => this.forceUpdate())
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     async function setup() {

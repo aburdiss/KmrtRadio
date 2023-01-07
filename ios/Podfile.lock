@@ -371,6 +371,8 @@ PODS:
     - React-jsi (= 0.70.6)
     - React-logger (= 0.70.6)
     - React-perflogger (= 0.70.6)
+  - RNLocalize (2.2.4):
+    - React-Core
   - SocketRocket (0.6.0)
   - SwiftAudioEx (0.15.3)
   - Yoga (1.14.0)
@@ -437,6 +439,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNLocalize (from `../node_modules/react-native-localize`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -527,6 +530,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNLocalize:
+    :path: "../node_modules/react-native-localize"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -578,6 +583,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: c75ceef7aa60a33b2d5731ebe5800ddde40cefc4
   React-runtimeexecutor: 15437b576139df27635400de0599d9844f1ab817
   ReactCommon: 349be31adeecffc7986a0de875d7fb0dcf4e251c
+  RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SwiftAudioEx: 83eabba2940924fc1c0d5cb0896049921365229c
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc

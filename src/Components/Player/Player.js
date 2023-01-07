@@ -9,6 +9,7 @@ import Text from '../../BaseComponents/Text/Text';
 
 import { getDate } from '../../utils/getDate';
 import { useCurrentTrack } from '../../utils/useCurrentTrack';
+import { translate } from '../../translations/TranslationModel';
 
 export default function Player() {
   const currentTrack = useCurrentTrack();
@@ -36,7 +37,7 @@ export default function Player() {
           onPress={() => TrackPlayer.skipToPrevious()}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>BACK</Text>
+          <Text style={styles.buttonText}>{translate('Back')}</Text>
         </Pressable>
         <Pressable
           onPress={() => {
@@ -48,13 +49,15 @@ export default function Player() {
           }}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>{isPlaying ? 'PAUSE' : 'PLAY'}</Text>
+          <Text style={styles.buttonText}>
+            {isPlaying ? translate('Pause') : translate('Play')}
+          </Text>
         </Pressable>
         <Pressable
           onPress={() => TrackPlayer.skipToNext()}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>NEXT</Text>
+          <Text style={styles.buttonText}>{translate('Next')}</Text>
         </Pressable>
       </View>
     </View>
