@@ -15,7 +15,7 @@ setI18nConfig();
 /**
  * @function App
  * @component
- * @description The main page for the Kmart Radio Application. This app will
+ * @description The main page for the KMRT Radio Application. This app will
  * stream Kmart in-store clips from the 70s through the 90s, that are available
  * on Archive.org
  * https://archive.org/details/attentionkmartshoppers

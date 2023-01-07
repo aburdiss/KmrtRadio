@@ -21,7 +21,7 @@ export function getTracks(month = currentMonth, year) {
           url: track.src,
           artwork: track.img,
           title: track.date,
-          artist: 'Kmart Radio',
+          artist: 'KMRT Radio',
         };
       });
 
