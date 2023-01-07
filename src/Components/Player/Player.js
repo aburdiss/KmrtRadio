@@ -1,11 +1,13 @@
 import React from 'react';
-import { Pressable, Text, View, Image, StyleSheet } from 'react-native';
+import { Pressable, View, Image, StyleSheet } from 'react-native';
 import TrackPlayer, {
   usePlaybackState,
   State,
 } from 'react-native-track-player';
-import { getDate } from '../../utils/getDate';
 
+import Text from '../../BaseComponents/Text/Text';
+
+import { getDate } from '../../utils/getDate';
 import { useCurrentTrack } from '../../utils/useCurrentTrack';
 
 export default function Player() {
@@ -34,7 +36,7 @@ export default function Player() {
           onPress={() => TrackPlayer.skipToPrevious()}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Back</Text>
+          <Text style={styles.buttonText}>BACK</Text>
         </Pressable>
         <Pressable
           onPress={() => {
@@ -46,13 +48,13 @@ export default function Player() {
           }}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>{isPlaying ? 'Pause' : 'Play'}</Text>
+          <Text style={styles.buttonText}>{isPlaying ? 'PAUSE' : 'PLAY'}</Text>
         </Pressable>
         <Pressable
           onPress={() => TrackPlayer.skipToNext()}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Next</Text>
+          <Text style={styles.buttonText}>NEXT</Text>
         </Pressable>
       </View>
     </View>

@@ -14,6 +14,12 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-KmartRadio-KmartRadioTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-KmartRadio-KmartRadioTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		DD79601C29691983008A4494 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD79601B29691983008A4494 /* InfoPlist.strings */; };
+		6896B87443FF499C8DF9A018 /* NotoSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91FF7FCCC5B845A692AAD6B2 /* NotoSans-Black.ttf */; };
+		7BF5CDF9EC28471DAB638538 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55E64FF37D1040E3ABF179F3 /* NotoSans-Bold.ttf */; };
+		084E6E6007DF4E41875DA788 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9132451627B9483EB03C974D /* NotoSans-Italic.ttf */; };
+		F2D3AC0BDEEF40EAA95090DB /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF4DB1360DA46E8B41B6C9D /* NotoSans-Medium.ttf */; };
+		74BEF1DBDD974989946050CB /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7477BF35D8524E84B95610D8 /* OFL.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +50,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = KmartRadio/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-KmartRadio-KmartRadioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KmartRadio-KmartRadioTests.release.xcconfig"; path = "Target Support Files/Pods-KmartRadio-KmartRadioTests/Pods-KmartRadio-KmartRadioTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD79601829688E0C008A4494 /* KmartRadio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KmartRadio-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD79601B29691983008A4494 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		91FF7FCCC5B845A692AAD6B2 /* NotoSans-Black.ttf */ = {isa = PBXFileReference; name = "NotoSans-Black.ttf"; path = "../src/assets/fonts/NotoSans-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		55E64FF37D1040E3ABF179F3 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; name = "NotoSans-Bold.ttf"; path = "../src/assets/fonts/NotoSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9132451627B9483EB03C974D /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; name = "NotoSans-Italic.ttf"; path = "../src/assets/fonts/NotoSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4FF4DB1360DA46E8B41B6C9D /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; name = "NotoSans-Medium.ttf"; path = "../src/assets/fonts/NotoSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7477BF35D8524E84B95610D8 /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../src/assets/fonts/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				DD79601829688E0C008A4494 /* KmartRadio-Bridging-Header.h */,
+				DD79601B29691983008A4494 /* InfoPlist.strings */,
 			);
 			name = KmartRadio;
 			sourceTree = "<group>";
@@ -124,6 +137,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				E7E9659515504AFCA7EE8996 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +163,19 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		E7E9659515504AFCA7EE8996 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				91FF7FCCC5B845A692AAD6B2 /* NotoSans-Black.ttf */,
+				55E64FF37D1040E3ABF179F3 /* NotoSans-Bold.ttf */,
+				9132451627B9483EB03C974D /* NotoSans-Italic.ttf */,
+				4FF4DB1360DA46E8B41B6C9D /* NotoSans-Medium.ttf */,
+				7477BF35D8524E84B95610D8 /* OFL.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,7 +272,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				DD79601C29691983008A4494 /* InfoPlist.strings in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6896B87443FF499C8DF9A018 /* NotoSans-Black.ttf in Resources */,
+				7BF5CDF9EC28471DAB638538 /* NotoSans-Bold.ttf in Resources */,
+				084E6E6007DF4E41875DA788 /* NotoSans-Italic.ttf in Resources */,
+				F2D3AC0BDEEF40EAA95090DB /* NotoSans-Medium.ttf in Resources */,
+				74BEF1DBDD974989946050CB /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
