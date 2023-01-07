@@ -1,3 +1,10 @@
+const namedColors = {
+  alizarinCrimson: '#DD3020',
+};
+export const colors = {
+  primary: namedColors.alizarinCrimson,
+};
+
 export const tracks = {
   January: {
     1991: [
