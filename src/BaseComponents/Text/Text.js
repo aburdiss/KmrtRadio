@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text as TextRN, StyleSheet } from 'react-native';
+import { fonts } from '../../Model/Model';
 
 export default function Text(props) {
   return (
@@ -11,6 +12,6 @@ export default function Text(props) {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'NotoSans-Medium',
+    fontFamily: fonts.fontPrimary,
   },
 });

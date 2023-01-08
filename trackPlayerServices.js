@@ -43,8 +43,19 @@ export async function setupPlayer() {
   }
 }
 
+export async function addInitialTracks(tracks) {
+  if (tracks) {
+    await TrackPlayer.reset();
+    await TrackPlayer.add(tracks);
+  }
+}
+
 export async function addTracks(tracks) {
-  await TrackPlayer.add(tracks);
+  if (tracks) {
+    await TrackPlayer.reset();
+    await TrackPlayer.add(tracks);
+    await TrackPlayer.play();
+  }
 }
 
 export async function playbackService() {

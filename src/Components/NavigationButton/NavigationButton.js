@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Pressable, StyleSheet } from 'react-native';
 import Svg, {
   RadialGradient,
   LinearGradient,
@@ -7,6 +7,8 @@ import Svg, {
   Stop,
   Rect,
 } from 'react-native-svg';
+
+import Text from '../../BaseComponents/Text/Text';
 
 export default function NavigationButton({ onPress, children }) {
   return (
@@ -20,7 +22,7 @@ export default function NavigationButton({ onPress, children }) {
       <View style={styles.view}>
         <Text style={styles.text}>{children}</Text>
         <View style={styles.linearGradient}>
-          <Svg width={70} height={40}>
+          <Svg width={80} height={40}>
             <Defs>
               <LinearGradient id="linGrad" x1="0" y1="0" x2="0" y2="1">
                 <Stop offset="0" stopColor="#c7c7c7" stopOpacity="1" />
@@ -71,7 +73,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   pressable: {
-    margin: 8,
+    marginVertical: 8,
+    marginHorizontal: 2,
     backgroundColor: '#d1d0cb',
     height: 52,
     width: 84,
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
   view: {
     position: 'relative',
     height: 40,
-    width: 60,
+    width: 68,
     borderRadius: 40,
     overflow: 'hidden',
     justifyContent: 'center',

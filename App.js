@@ -1,8 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import * as RNLocalize from 'react-native-localize';
 import TrackPlayer from 'react-native-track-player';
+import { Svg, Rect, Defs, Pattern } from 'react-native-svg';
+
+import {
+  setupPlayer,
+  addInitialTracks,
+  playbackService,
+} from './trackPlayerServices';
 
 import Loading from './src/Screens/Loading/Loading';
 import Home from './src/Screens/Home/Home';
@@ -12,10 +19,9 @@ import More from './src/Screens/More/More';
 import { setI18nConfig, translate } from './src/translations/TranslationModel';
 
 import { getTracks } from './src/utils/getTracks';
-import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
 import NavigationButton from './src/Components/NavigationButton/NavigationButton';
-import { Svg, Rect, Defs, Pattern } from 'react-native-svg';
 import { colors } from './src/Model/Model';
+import { AppContext } from './src/Contexts/AppContext';
 
 setI18nConfig();
 
@@ -38,6 +44,8 @@ export default function App() {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const pagerRef = useRef(null);
 
+  const { state } = useContext(AppContext);
+
   useEffect(() => {
     RNLocalize.addEventListener('change', handleLocalizationChange);
     return () => {
@@ -54,23 +62,25 @@ export default function App() {
   };
 
   useEffect(() => {
-    async function setup() {
-      let isSetup = await setupPlayer();
+    if (state.month && state.year && !isPlayerReady) {
+      async function setup() {
+        let isSetup = await setupPlayer();
 
-      await playbackService();
+        await playbackService();
 
-      const tracks = getTracks('March');
+        const tracks = getTracks(state.month, state.year);
 
-      const queue = await TrackPlayer.getQueue();
-      if (isSetup && queue.length <= 0) {
-        await addTracks(tracks);
+        const queue = await TrackPlayer.getQueue();
+        if (isSetup && queue.length <= 0) {
+          await addInitialTracks(tracks);
+        }
+
+        setIsPlayerReady(isSetup);
       }
 
-      setIsPlayerReady(isSetup);
+      setup();
     }
-
-    setup();
-  }, []);
+  }, [isPlayerReady, state.month, state.year]);
 
   if (!isPlayerReady) {
     return <Loading />;

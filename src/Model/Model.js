@@ -33,6 +33,10 @@ export const colors = {
   tertiary2: namedColors.persianBlue,
 };
 
+export const fonts = {
+  fontPrimary: 'NotoSans-Medium',
+};
+
 export const tracks = {
   January: {
     1991: [

@@ -1,35 +1,109 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Pressable, View, Image, StyleSheet } from 'react-native';
 import TrackPlayer, {
   usePlaybackState,
+  useTrackPlayerEvents,
+  Event,
   State,
 } from 'react-native-track-player';
+import { Picker } from '@react-native-picker/picker';
 
 import Text from '../../BaseComponents/Text/Text';
 
-import { getDate } from '../../utils/getDate';
-import { useCurrentTrack } from '../../utils/useCurrentTrack';
+import { getYearsForMonth } from '../../utils/getYearsForMonth';
 import { translate } from '../../translations/TranslationModel';
 
+import { tracks } from '../../Model/Model';
+
+import { addTracks } from '../../../trackPlayerServices';
+import { getTracks } from '../../utils/getTracks';
+import { AppContext } from '../../Contexts/AppContext';
+
 export default function Player() {
-  const currentTrack = useCurrentTrack();
   const playerState = usePlaybackState();
   const isPlaying = playerState === State.Playing;
 
+  const { state, dispatch } = useContext(AppContext);
+
+  useTrackPlayerEvents([Event.PlaybackTrackChanged], async (event) => {
+    if (event.type === Event.PlaybackTrackChanged && event.nextTrack != null) {
+      dispatch({
+        type: AppContext.actions.SET_TRACK_INDEX,
+        trackIndex: event.nextTrack,
+      });
+    }
+  });
+
+  useEffect(
+    function updateTrack() {
+      if (state.month && state.year) {
+        const newTracks = getTracks(state.month, state.year);
+        console.log('update', newTracks);
+        addTracks(newTracks);
+      }
+    },
+    [state.year, state.month],
+  );
+
   return (
     <View style={styles.container}>
+      <View style={styles.topContainer}>
+        <View>
+          <Text style={styles.playerBrand}>テープアスン 2000</Text>
+        </View>
+        <View style={styles.solarArray}>
+          <View style={styles.solarPanel} />
+          <View style={styles.solarPanel} />
+          <View style={styles.solarPanel} />
+          <View style={styles.solarPanel} />
+        </View>
+      </View>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: currentTrack?.artwork }} style={styles.image} />
+        <Image
+          source={{
+            uri: tracks?.[state.month]?.[state.year]?.[state.trackIndex]?.img,
+          }}
+          style={styles.image}
+        />
       </View>
       <View style={styles.screen}>
-        <View>
-          <View>
-            <Text>{getDate(currentTrack?.id)?.month}</Text>
+        <View style={styles.pickerContainer}>
+          <View style={styles.pickerMonth}>
+            <Picker
+              selectedValue={state.month}
+              onValueChange={(itemValue) => {
+                dispatch({
+                  type: AppContext.actions.SET_MONTH_AND_YEAR,
+                  month: itemValue,
+                  year: getYearsForMonth(itemValue)[0],
+                });
+              }}
+            >
+              {Object.keys(tracks).map((month) => {
+                return (
+                  <Picker.Item
+                    label={translate(month)}
+                    value={month}
+                    key={month}
+                  />
+                );
+              })}
+            </Picker>
+            {/* <Text>{getDate(currentTrack?.id)?.month}</Text> */}
           </View>
-          <View>
-            <Text>{getDate(currentTrack?.id)?.year}</Text>
+          <View style={styles.pickerYear}>
+            <Picker
+              selectedValue={state.year}
+              onValueChange={(itemValue) =>
+                dispatch({ type: AppContext.actions.SET_YEAR, year: itemValue })
+              }
+            >
+              {getYearsForMonth(state.month)?.map((year) => {
+                return <Picker.Item label={year} value={year} key={year} />;
+              })}
+            </Picker>
+            {/* <Text>{getDate(currentTrack?.id)?.year}</Text> */}
           </View>
-          <Text>{currentTrack?.artist}</Text>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -71,10 +145,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     flex: 1,
     padding: 16,
+    margin: 2,
   },
   buttonContainer: {
     flexDirection: 'row',
-    marginHorizontal: 16,
   },
   buttonText: {
     textAlign: 'center',
@@ -82,6 +156,9 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'rgb(183, 176, 167)',
+    margin: 16,
+    padding: 16,
+    borderRadius: 8,
   },
   image: {
     width: '100%',
@@ -89,12 +166,46 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   imageContainer: {
-    marginHorizontal: 16,
+    marginHorizontal: 1,
     padding: 32,
     backgroundColor: 'rgb(195, 185, 171)',
   },
+  pickerContainer: {
+    flexDirection: 'row',
+  },
+  pickerMonth: {
+    flex: 1,
+  },
+  pickerYear: {
+    width: 120,
+  },
+  playerBrand: {
+    fontSize: 12,
+  },
   screen: {
     marginVertical: 8,
-    marginHorizontal: 16,
+    backgroundColor: '#56635C',
+    borderColor: '#EAEAEA',
+    borderWidth: 5,
+  },
+  solarArray: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  solarPanel: {
+    backgroundColor: '#514348',
+    width: 24,
+    height: 32,
+    marginLeft: 1,
+    borderTopColor: 'black',
+    borderTopWidth: 1,
+    borderLeftColor: 'black',
+    borderLeftWidth: 1,
+  },
+  topContainer: {
+    flexDirection: 'row',
+    marginBottom: 8,
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
 });
