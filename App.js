@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { SafeAreaView, View, StyleSheet, Pressable } from 'react-native';
+import PagerView from 'react-native-pager-view';
 import * as RNLocalize from 'react-native-localize';
 import TrackPlayer from 'react-native-track-player';
 
 import Loading from './src/Screens/Loading/Loading';
 import Home from './src/Screens/Home/Home';
+import Themes from './src/Screens/Themes/Themes';
+import More from './src/Screens/More/More';
 
 import { setI18nConfig } from './src/translations/TranslationModel';
 
 import { getTracks } from './src/utils/getTracks';
 import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
+import Text from './src/BaseComponents/Text/Text';
 
 setI18nConfig();
 
@@ -29,6 +34,7 @@ setI18nConfig();
  */
 export default function App() {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const pagerRef = useRef(null);
 
   useEffect(() => {
     RNLocalize.addEventListener('change', handleLocalizationChange);
@@ -68,5 +74,53 @@ export default function App() {
     return <Loading />;
   }
 
-  return <Home />;
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Pressable
+          onPress={() => {
+            pagerRef?.current?.setPage(0);
+          }}
+        >
+          <Text>Radio</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            pagerRef?.current?.setPage(1);
+          }}
+        >
+          <Text>Themes</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            pagerRef?.current?.setPage(2);
+          }}
+        >
+          <Text>More</Text>
+        </Pressable>
+      </View>
+      <PagerView style={styles.pagerView} initialPage={0} ref={pagerRef}>
+        <View key="1">
+          <Home />
+        </View>
+        <View key="2">
+          <Themes />
+        </View>
+        <View key="3">
+          <More />
+        </View>
+      </PagerView>
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  pagerView: {
+    flex: 1,
+  },
+});
