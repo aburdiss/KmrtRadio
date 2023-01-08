@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { SafeAreaView, View, StyleSheet, Pressable } from 'react-native';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import * as RNLocalize from 'react-native-localize';
 import TrackPlayer from 'react-native-track-player';
@@ -9,11 +9,13 @@ import Home from './src/Screens/Home/Home';
 import Themes from './src/Screens/Themes/Themes';
 import More from './src/Screens/More/More';
 
-import { setI18nConfig } from './src/translations/TranslationModel';
+import { setI18nConfig, translate } from './src/translations/TranslationModel';
 
 import { getTracks } from './src/utils/getTracks';
 import { setupPlayer, addTracks, playbackService } from './trackPlayerServices';
-import Text from './src/BaseComponents/Text/Text';
+import NavigationButton from './src/Components/NavigationButton/NavigationButton';
+import { Svg, Rect, Defs, Pattern } from 'react-native-svg';
+import { colors } from './src/Model/Model';
 
 setI18nConfig();
 
@@ -75,50 +77,96 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Pressable
-          onPress={() => {
-            pagerRef?.current?.setPage(0);
-          }}
-        >
-          <Text>Radio</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            pagerRef?.current?.setPage(1);
-          }}
-        >
-          <Text>Themes</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            pagerRef?.current?.setPage(2);
-          }}
-        >
-          <Text>More</Text>
-        </Pressable>
+    <>
+      <View style={styles.background}>
+        <Svg>
+          <Defs>
+            <Pattern
+              id="pattern"
+              width="50"
+              height="50"
+              patternUnits="userSpaceOnUse"
+              patternTransform="translate(33 -47) scale(4.5) rotate(28)"
+              viewBox="0 0 100 20"
+            >
+              <Rect width="1" height="1" x="13" y="0" fill={colors.primary1} />
+              <Rect width="1" height="1" x="2" y="1" fill={colors.primary1} />
+              <Rect width="1" height="1" x="16" y="2" fill={colors.primary1} />
+              <Rect width="1" height="1" x="8" y="3" fill={colors.primary2} />
+              <Rect width="1" height="1" x="5" y="5" fill={colors.primary1} />
+              <Rect width="1" height="1" x="15" y="6" fill={colors.primary5} />
+              <Rect width="1" height="1" x="2" y="7" fill={colors.primary5} />
+              <Rect width="1" height="1" x="6" y="9" fill={colors.primary2} />
+              <Rect width="1" height="1" x="18" y="9" fill={colors.primary2} />
+              <Rect width="1" height="1" x="13" y="10" fill={colors.primary1} />
+              <Rect width="1" height="1" x="1" y="11" fill={colors.primary1} />
+              <Rect width="1" height="1" x="11" y="14" fill={colors.primary1} />
+              <Rect width="1" height="1" x="15" y="14" fill={colors.primary1} />
+              <Rect width="1" height="1" x="5" y="15" fill={colors.primary1} />
+              <Rect width="1" height="1" x="1" y="18" fill={colors.primary5} />
+            </Pattern>
+          </Defs>
+          <Rect width="100%" height="100%" fill="url(#pattern)" />
+        </Svg>
       </View>
-      <PagerView style={styles.pagerView} initialPage={0} ref={pagerRef}>
-        <View key="1">
-          <Home />
+      <SafeAreaView style={styles.container}>
+        <View style={styles.navigationButtonsContainer}>
+          <NavigationButton
+            onPress={() => {
+              pagerRef?.current?.setPage(0);
+            }}
+          >
+            {translate('Radio')}
+          </NavigationButton>
+          <NavigationButton
+            onPress={() => {
+              pagerRef?.current?.setPage(1);
+            }}
+          >
+            {translate('Themes')}
+          </NavigationButton>
+          <NavigationButton
+            onPress={() => {
+              pagerRef?.current?.setPage(2);
+            }}
+          >
+            {translate('More')}
+          </NavigationButton>
         </View>
-        <View key="2">
-          <Themes />
-        </View>
-        <View key="3">
-          <More />
-        </View>
-      </PagerView>
-    </SafeAreaView>
+        <PagerView style={styles.pagerView} initialPage={0} ref={pagerRef}>
+          <View key="1">
+            <Home />
+          </View>
+          <View key="2">
+            <Themes />
+          </View>
+          <View key="3">
+            <More />
+          </View>
+        </PagerView>
+      </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    zIndex: -1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+    backgroundColor: colors.background3,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+  },
+  navigationButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   pagerView: {
     flex: 1,

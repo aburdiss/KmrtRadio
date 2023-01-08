@@ -2,5 +2,8 @@
   "Play": "REPRODUCIR",
   "Pause": "PAUSAR",
   "Back": "PREVIO",
-  "Next": "PROXIMO"
+  "Next": "PROXIMO",
+  "Radio": "Radio",
+  "Themes": "Temas",
+  "More": "Más"
 }

@@ -2,5 +2,8 @@
   "Play": "PLAY",
   "Pause": "PAUSE",
   "Back": "BACK",
-  "Next": "NEXT"
+  "Next": "NEXT",
+  "Radio": "Radio",
+  "Themes": "Themes",
+  "More": "More"
 }
