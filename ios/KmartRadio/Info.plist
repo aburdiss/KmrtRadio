@@ -44,6 +44,10 @@
 		<string>NotoSans-Italic.ttf</string>
 		<string>NotoSans-Medium.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
