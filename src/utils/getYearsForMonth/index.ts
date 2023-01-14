@@ -1,5 +1,5 @@
 import { tracks } from '../../Model/Model';
 
-export function getYearsForMonth(month) {
+export function getYearsForMonth(month: string) {
   return Object.keys(tracks[month]);
 }
