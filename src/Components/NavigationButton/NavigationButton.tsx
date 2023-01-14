@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Pressable, StyleSheet } from 'react-native';
 import Svg, {
   RadialGradient,
@@ -113,3 +114,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+NavigationButton.propTypes = {
+  onPress: PropTypes.func,
+  children: PropTypes.node,
+};

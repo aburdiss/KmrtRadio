@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text as TextRN, StyleSheet } from 'react-native';
 import { fonts } from '../../Model/Model';
 
@@ -36,3 +37,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.fontPrimary,
   },
 });
+
+Text.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.node,
+};

@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import { getCurrentMonth } from '../utils/getCurrentMonth';
 import { getYearsForMonth } from '../utils/getYearsForMonth';
 import { randomFromArray } from '../utils/randomFromArray';
@@ -94,3 +95,7 @@ export function AppProvider({ children }: any) {
     </AppContext.Provider>
   );
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.node,
+};
