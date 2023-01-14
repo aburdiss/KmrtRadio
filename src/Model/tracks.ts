@@ -1,4 +1,30 @@
-export const tracks = {
+export type Track = {
+  date: string;
+  img: string;
+  src: string;
+  link: string;
+};
+
+/**
+ * @name tracks
+ * @description The main data model for the application. This holds all
+ * available images, and audio links. This data is structured in the way it is
+ * because of the nature of the audio. I want when you open the app for it to
+ * feel like a radio station and you don't have to think about the music, but
+ * I don't want the app to get old, or play Christmas music in April. The most
+ * important divide in the structure of the data is the month that it was
+ * played in the past, and we will keep those months as the default when you
+ * open the app. The year doesn't matter so much, so that is randomized, but
+ * can be changed. The actual track does not matter either, so those are all
+ * thrown into an array and randomized as well, and passed to the queue.
+ * Created 1/6/23
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/14/23
+ * @version 1.1.0
+ */
+export const tracks: any = {
   January: {
     1991: [
       {

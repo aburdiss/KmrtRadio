@@ -10,15 +10,15 @@ import App from './App';
 import TrackPlayer from 'react-native-track-player';
 
 import { playbackService } from './trackPlayerServices';
-import { PreferencesProvider } from './src/Contexts/AppContext';
+import { AppProvider } from './src/Contexts/AppContext';
 
 const appName = 'KmartRadio';
 
 function WrappedApp() {
   return (
-    <PreferencesProvider>
+    <AppProvider>
       <App />
-    </PreferencesProvider>
+    </AppProvider>
   );
 }
 

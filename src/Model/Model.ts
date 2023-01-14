@@ -52,4 +52,4 @@ export const months = [
   'December',
 ];
 
-export { tracks } from './tracks';
+export * from './tracks';

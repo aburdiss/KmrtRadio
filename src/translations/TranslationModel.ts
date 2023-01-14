@@ -11,16 +11,17 @@ const translationGetters = {
  * @function translate
  * @description Takes a string, and returns the translated version of that
  * string, if it exists in the configuration file for the language provided.
+ * Created 12/1/20
  * @author Alexander Burdiss
- * @since 12/1/20
- * @version 1.0.1
+ * @since 1/14/23
+ * @version 1.1.0
  * @param {string} key The string to be translated
  * @returns {string} The input string translated into the language the device
  * is currently in.
  */
 export const translate = memoize(
-  (key, config) => i18n.t(key, config),
-  (key, config) => (config ? key + JSON.stringify(config) : key),
+  (key) => i18n.t(key),
+  (key) => key,
 );
 
 /**
@@ -38,8 +39,10 @@ export const setI18nConfig = () => {
     RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
     fallback;
 
-  translate.cache.clear();
+  translate.cache.clear?.();
 
-  i18n.translations = { [languageTag]: translationGetters[languageTag]() };
+  i18n.translations = {
+    [languageTag]: (translationGetters as any)[languageTag](),
+  };
   i18n.locale = languageTag;
 };

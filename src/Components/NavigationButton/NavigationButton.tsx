@@ -10,7 +10,25 @@ import Svg, {
 
 import Text from '../../BaseComponents/Text/Text';
 
-export default function NavigationButton({ onPress, children }) {
+/**
+ * @function NavigationButton
+ * @component
+ * @description A button that is styled to look like a computer key. These are
+ * used at the top of the application to switch between the screens of the app,
+ * and are highly styleized.
+ * Created 1/8/23
+ * @param {Object} props JSX props passed to this React Component
+ * @param {Function} props.onPress A function to call when this button is
+ * pressed
+ * @param {string} props.children Text to render inside this button
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/14/23
+ * @version 1.0.0
+ */
+export default function NavigationButton({ onPress, children }: any) {
   return (
     <Pressable
       onPress={onPress}
