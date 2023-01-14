@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import Text from '../../BaseComponents/Text/Text';
+import Explorer from '../../Components/Explorer/Explorer';
 
 /**
  * @function More
@@ -16,9 +15,5 @@ import Text from '../../BaseComponents/Text/Text';
  * @version 1.0.0
  */
 export default function More() {
-  return (
-    <View>
-      <Text>More</Text>
-    </View>
-  );
+  return <Explorer />;
 }

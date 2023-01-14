@@ -26,7 +26,8 @@
     "react-native-localize": "^2.2.4",
     "react-native-pager-view": "^6.1.2",
     "react-native-svg": "^13.6.0",
-    "react-native-track-player": "^3.2.0"
+    "react-native-track-player": "^3.2.0",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -39,6 +40,7 @@
     "@types/jest": "^29.2.1",
     "@types/lodash.memoize": "^4.1.7",
     "@types/react": "^18.0.24",
+    "@types/react-native-vector-icons": "^6.4.13",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
@@ -107,7 +109,7 @@
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     },
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-track-player)/)"
+      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-track-player|react-native-vector-icons)/)"
     ]
   }
 }

@@ -1,5 +1,6 @@
 const namedColors = {
   white: '#ffffff',
+  black: '#000000',
   brightRed: '#a30000',
   alizarinCrimson: '#DD3020',
   burntSienna: '#ea5b43',
@@ -13,6 +14,7 @@ const namedColors = {
   feta: '#e4fbde',
   darkBlue: '#0000aa',
   persianBlue: '#3020dd',
+  norway: '#A6C7A0',
 };
 export const colors = {
   background1: namedColors.white,
@@ -31,6 +33,8 @@ export const colors = {
   secondary4: namedColors.feta,
   tertiary1: namedColors.darkBlue,
   tertiary2: namedColors.persianBlue,
+  text: namedColors.black,
+  screen: namedColors.norway,
 };
 
 export const fonts = {

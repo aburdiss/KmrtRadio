@@ -13,7 +13,7 @@ import Text from '../../BaseComponents/Text/Text';
 import { getYearsForMonth } from '../../utils/getYearsForMonth';
 import { translate } from '../../translations/TranslationModel';
 
-import { tracks } from '../../Model/Model';
+import { colors, tracks } from '../../Model/Model';
 
 import { addTracks } from '../../../trackPlayerServices';
 import { getTracks } from '../../utils/getTracks';
@@ -163,10 +163,14 @@ const styles = StyleSheet.create({
     color: 'rgb(176, 173, 177)',
   },
   container: {
-    backgroundColor: 'rgb(183, 176, 167)',
+    backgroundColor: '#808080',
     margin: 16,
     padding: 16,
     borderRadius: 8,
+    borderBottomWidth: 3,
+    borderBottomColor: '#adadaa',
+    borderRightWidth: 3,
+    borderRightColor: '#adadaa',
   },
   image: {
     width: '100%',
@@ -192,9 +196,11 @@ const styles = StyleSheet.create({
   },
   screen: {
     marginVertical: 8,
-    backgroundColor: '#56635C',
-    borderColor: '#EAEAEA',
-    borderWidth: 5,
+    backgroundColor: colors.screen,
+    borderTopWidth: 2,
+    borderTopColor: '#adadaa',
+    borderLeftWidth: 2,
+    borderLeftColor: '#adadaa',
   },
   topContainer: {
     flexDirection: 'row',

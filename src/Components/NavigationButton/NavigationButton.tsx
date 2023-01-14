@@ -10,6 +10,7 @@ import Svg, {
 } from 'react-native-svg';
 
 import Text from '../../BaseComponents/Text/Text';
+import { colors } from '../../Model/Model';
 
 /**
  * @function NavigationButton
@@ -21,6 +22,7 @@ import Text from '../../BaseComponents/Text/Text';
  * @param {Object} props JSX props passed to this React Component
  * @param {Function} props.onPress A function to call when this button is
  * pressed
+ * @param {boolean} props.active Whether or not this button is active
  * @param {string} props.children Text to render inside this button
  * @returns {JSX.Element} JSX render instructions
  *
@@ -29,7 +31,7 @@ import Text from '../../BaseComponents/Text/Text';
  * @since 1/14/23
  * @version 1.0.0
  */
-export default function NavigationButton({ onPress, children }: any) {
+export default function NavigationButton({ onPress, active, children }: any) {
   return (
     <Pressable
       onPress={onPress}
@@ -39,7 +41,7 @@ export default function NavigationButton({ onPress, children }: any) {
       })}
     >
       <View style={styles.view}>
-        <Text style={styles.text}>{children}</Text>
+        <Text style={active ? styles.activeText : styles.text}>{children}</Text>
         <View style={styles.linearGradient}>
           <Svg width={80} height={40}>
             <Defs>
@@ -77,6 +79,12 @@ export default function NavigationButton({ onPress, children }: any) {
 }
 
 const styles = StyleSheet.create({
+  activeText: {
+    color: colors.primary0,
+    textShadowColor: colors.primary3,
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 6,
+  },
   after: {
     width: '100%',
     height: '100%',
@@ -117,5 +125,6 @@ const styles = StyleSheet.create({
 
 NavigationButton.propTypes = {
   onPress: PropTypes.func,
+  active: PropTypes.bool,
   children: PropTypes.node,
 };

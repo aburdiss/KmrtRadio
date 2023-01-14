@@ -39,6 +39,7 @@ export async function setupPlayer() {
     await TrackPlayer.setRepeatMode(RepeatMode.Queue);
     isSetup = true;
   } finally {
+    // eslint-disable-next-line no-unsafe-finally
     return isSetup;
   }
 }
