@@ -14,6 +14,9 @@ const namedColors = {
   feta: '#e4fbde',
   darkBlue: '#0000aa',
   persianBlue: '#3020dd',
+
+  gray: '#808080',
+  delta: '#ADADAA',
   norway: '#A6C7A0',
 };
 export const colors = {
@@ -33,8 +36,15 @@ export const colors = {
   secondary4: namedColors.feta,
   tertiary1: namedColors.darkBlue,
   tertiary2: namedColors.persianBlue,
+
+  electronicDark: namedColors.gray,
+  electronicLight: namedColors.delta,
   text: namedColors.black,
   screen: namedColors.norway,
+
+  typescriptColor: '#3178c6',
+  reactColor: '#61dafb',
+  white: namedColors.white,
 };
 
 export const fonts = {

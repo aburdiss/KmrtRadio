@@ -1,4 +1,5 @@
 import { NativeModules as RNNativeModules } from 'react-native';
+import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock';
 
 jest.mock('react-native-track-player', () => ({
   __esModule: true,
@@ -53,7 +54,7 @@ jest.mock('react-native-track-player', () => ({
 // }));
 
 // jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
-// jest.mock('react-native-device-info', () => mockRNDeviceInfo);
+jest.mock('react-native-device-info', () => mockRNDeviceInfo);
 jest.mock('react-native-localize', () => {
   return {
     getLocales: jest.fn(),

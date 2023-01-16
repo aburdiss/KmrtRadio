@@ -23,6 +23,7 @@
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-native": "0.71.0",
+    "react-native-device-info": "^10.3.0",
     "react-native-localize": "^2.2.4",
     "react-native-pager-view": "^6.1.2",
     "react-native-svg": "^13.6.0",
@@ -109,7 +110,7 @@
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     },
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-track-player|react-native-vector-icons)/)"
+      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-track-player|react-native-vector-icons|react-native-device-info)/)"
     ]
   }
 }

@@ -68,7 +68,11 @@ export default function NavigationButton({ onPress, active, children }: any) {
               gradientUnits="userSpaceOnUse"
             >
               <Stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-              <Stop offset="100%" stopColor="#adadaa" stopOpacity="1" />
+              <Stop
+                offset="100%"
+                stopColor={colors.electronicLight}
+                stopOpacity="1"
+              />
             </RadialGradient>
           </Defs>
           <Rect width="100%" height="100%" fill="url(#grad)" />

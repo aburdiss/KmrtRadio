@@ -15,17 +15,17 @@ export default function BackButton({ onPress }: any) {
   );
 }
 
+BackButton.propTypes = {
+  onPress: PropTypes.func,
+};
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   text: {
-    paddingLeft: 4,
+    paddingLeft: 8,
     fontSize: 18,
   },
 });
-
-BackButton.propTypes = {
-  onPress: PropTypes.func,
-};

@@ -385,6 +385,8 @@ PODS:
     - React-perflogger (= 0.71.0)
   - RNCPicker (2.4.8):
     - React-Core
+  - RNDeviceInfo (10.3.0):
+    - React-Core
   - RNLocalize (2.2.4):
     - React-Core
   - RNSVG (13.6.0):
@@ -457,6 +459,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -553,6 +556,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCPicker:
     :path: "../node_modules/@react-native-picker/picker"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   RNSVG:
@@ -610,6 +615,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: ac80782d9d76ba2b0f709f4de0c427fe33c352dc
   ReactCommon: 20e38a9be5fe1341b5e422220877cc94034776ba
   RNCPicker: 0bf8ef8f7800524f32d2bb2a8bcadd53eda0ecd1
+  RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
   RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608

@@ -21,6 +21,7 @@ import { getTracks } from './src/utils/getTracks';
 import NavigationButton from './src/Components/NavigationButton/NavigationButton';
 import { AppContext } from './src/Contexts/AppContext';
 import AppBackground from './src/BaseComponents/AppBackground/AppBackground';
+import { colors } from './src/Model/Model';
 
 setI18nConfig();
 
@@ -150,13 +151,13 @@ const styles = StyleSheet.create({
   },
   keyboard: {
     flexDirection: 'row',
-    backgroundColor: '#808080',
+    backgroundColor: colors.electronicDark,
     borderRadius: 10,
     paddingHorizontal: 10,
     borderBottomWidth: 3,
-    borderBottomColor: '#adadaa',
+    borderBottomColor: colors.electronicLight,
     borderRightWidth: 3,
-    borderRightColor: '#adadaa',
+    borderRightColor: colors.electronicDark,
   },
   navigationButtonsContainer: {
     flexDirection: 'row',

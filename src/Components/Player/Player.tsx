@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Pressable, View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import TrackPlayer, {
   usePlaybackState,
   useTrackPlayerEvents,
@@ -18,6 +18,7 @@ import { colors, tracks } from '../../Model/Model';
 import { addTracks } from '../../../trackPlayerServices';
 import { getTracks } from '../../utils/getTracks';
 import { AppContext, ACTIONS } from '../../Contexts/AppContext';
+import PlayerButton from './PlayerButton/PlayerButton';
 
 /**
  * @function Player
@@ -97,7 +98,6 @@ export default function Player() {
                 );
               })}
             </Picker>
-            {/* <Text>{getDate(currentTrack?.id)?.month}</Text> */}
           </View>
           <View style={styles.pickerYear}>
             <Picker
@@ -110,18 +110,18 @@ export default function Player() {
                 return <Picker.Item label={year} value={year} key={year} />;
               })}
             </Picker>
-            {/* <Text>{getDate(currentTrack?.id)?.year}</Text> */}
           </View>
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <Pressable
+        <PlayerButton
+          label={translate('Back')}
+          icon="play-back-sharp"
           onPress={() => TrackPlayer.skipToPrevious()}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>{translate('Back')}</Text>
-        </Pressable>
-        <Pressable
+        />
+        <PlayerButton
+          label={isPlaying ? translate('Pause') : translate('Play')}
+          icon={isPlaying ? 'pause-sharp' : 'play-sharp'}
           onPress={() => {
             if (isPlaying) {
               TrackPlayer.pause();
@@ -129,18 +129,12 @@ export default function Player() {
               TrackPlayer.play();
             }
           }}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>
-            {isPlaying ? translate('Pause') : translate('Play')}
-          </Text>
-        </Pressable>
-        <Pressable
+        />
+        <PlayerButton
+          label={translate('Next')}
+          icon="play-forward-sharp"
           onPress={() => TrackPlayer.skipToNext()}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>{translate('Next')}</Text>
-        </Pressable>
+        />
       </View>
     </View>
   );
@@ -158,19 +152,18 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
   },
-  buttonText: {
-    textAlign: 'center',
-    color: 'rgb(176, 173, 177)',
+  buttonInner: {
+    alignItems: 'center',
   },
   container: {
-    backgroundColor: '#808080',
+    backgroundColor: colors.electronicDark,
     margin: 16,
     padding: 16,
     borderRadius: 8,
     borderBottomWidth: 3,
-    borderBottomColor: '#adadaa',
+    borderBottomColor: colors.electronicLight,
     borderRightWidth: 3,
-    borderRightColor: '#adadaa',
+    borderRightColor: colors.electronicLight,
   },
   image: {
     width: '100%',
@@ -180,7 +173,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     marginHorizontal: 1,
     padding: 32,
-    backgroundColor: 'rgb(195, 185, 171)',
+    backgroundColor: colors.electronicLight,
   },
   pickerContainer: {
     flexDirection: 'row',
@@ -198,9 +191,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: colors.screen,
     borderTopWidth: 2,
-    borderTopColor: '#adadaa',
+    borderTopColor: colors.electronicLight,
     borderLeftWidth: 2,
-    borderLeftColor: '#adadaa',
+    borderLeftColor: colors.electronicLight,
   },
   topContainer: {
     flexDirection: 'row',
