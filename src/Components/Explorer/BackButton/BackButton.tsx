@@ -6,6 +6,21 @@ import { colors } from '../../../Model/Model';
 import Text from '../../../BaseComponents/Text/Text';
 import { StyleSheet } from 'react-native';
 
+/**
+ * @function BackButton
+ * @memberof Explorer
+ * @description A stylized button to go back one context level in the Explorer
+ * Created 1/14/23
+ * @param {Object} props JSX props passed to this React component
+ * @param {Function} props.onPress A function to call when this component is
+ * clicked
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/16/23
+ * @version 1.0.0
+ */
 export default function BackButton({ onPress }: any) {
   return (
     <Pressable onPress={onPress} style={styles.container}>

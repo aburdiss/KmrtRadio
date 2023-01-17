@@ -1,0 +1,80 @@
+{
+  "@react-native-picker/picker@2.4.8": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-picker/picker",
+    "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "i18n-js@3.9.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/fnando/i18n-js",
+    "licenseUrl": "https://github.com/fnando/i18n-js",
+    "parents": "kmart-radio"
+  },
+  "lodash.memoize@4.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "npm-license-crawler@0.2.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "http://github.com/mwittig/npm-license-crawler",
+    "licenseUrl": "http://github.com/mwittig/npm-license-crawler/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "prop-types@15.8.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/facebook/prop-types",
+    "licenseUrl": "https://github.com/facebook/prop-types/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-device-info@10.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-device-info/react-native-device-info",
+    "licenseUrl": "https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-localize@2.2.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zoontek/react-native-localize",
+    "licenseUrl": "https://github.com/zoontek/react-native-localize/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-pager-view@6.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/callstack/react-native-pager-view",
+    "licenseUrl": "https://github.com/callstack/react-native-pager-view/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-svg@13.6.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-community/react-native-svg",
+    "licenseUrl": "https://github.com/react-native-community/react-native-svg/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-track-player@3.2.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/doublesymmetry/react-native-track-player",
+    "licenseUrl": "https://github.com/doublesymmetry/react-native-track-player/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native-vector-icons@9.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/oblador/react-native-vector-icons",
+    "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  },
+  "react-native@0.71.0": {
+    "licenses": "MIT",
+    "repository": "github:facebook/react-native",
+    "licenseUrl": "github:facebook/react-native",
+    "parents": "kmart-radio"
+  },
+  "react@18.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/facebook/react",
+    "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+    "parents": "kmart-radio"
+  }
+}
