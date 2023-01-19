@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import TrackPlayer, {
   usePlaybackState,
   useTrackPlayerEvents,
@@ -19,6 +19,7 @@ import { addTracks } from '../../../trackPlayerServices';
 import { getTracks } from '../../utils/getTracks';
 import { AppContext, ACTIONS } from '../../Contexts/AppContext';
 import PlayerButton from './PlayerButton/PlayerButton';
+import Cassette from '../Cassette/Cassette';
 
 /**
  * @function Player
@@ -68,12 +69,13 @@ export default function Player() {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Image
+        <Cassette month={state.month} year={state.year} />
+        {/* <Image
           source={{
             uri: tracks?.[state.month]?.[state.year]?.[state.trackIndex]?.img,
           }}
           style={styles.image}
-        />
+        /> */}
       </View>
       <View style={styles.screen}>
         <View style={styles.pickerContainer}>
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginHorizontal: 1,
-    padding: 32,
+    padding: 16,
     backgroundColor: colors.electronicLight,
   },
   pickerContainer: {
