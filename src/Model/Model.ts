@@ -18,6 +18,7 @@ const namedColors = {
   gray: '#808080',
   delta: '#ADADAA',
   norway: '#A6C7A0',
+  hibiscus: '#C83361',
 };
 export const colors = {
   background1: namedColors.white,
@@ -41,6 +42,8 @@ export const colors = {
   electronicLight: namedColors.delta,
   text: namedColors.black,
   screen: namedColors.norway,
+
+  cassettePrimary: namedColors.hibiscus,
 
   typescriptColor: '#3178c6',
   reactColor: '#61dafb',

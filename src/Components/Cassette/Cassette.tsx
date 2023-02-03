@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 
 import Text from '../../BaseComponents/Text/Text';
+import { colors } from '../../Model/Model';
 
 /**
  * @function Cassette
@@ -17,14 +18,19 @@ import Text from '../../BaseComponents/Text/Text';
  * current percent that this cassette is played through. This is kept up to
  * date with the music as the status bar
  * @returns {JSX.Element} JSX render instructions
+ * @see https://codepen.io/tomhazledine/pen/RwxeVw
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/17/23
- * @version 1.0.0
+ * @since 2/2/23
+ * @version 1.0.1
  */
 export default function Cassette({ month, year, color, percentPlayed }: any) {
+  const leftReel = 100;
+  const rightReel = 150;
+
   console.log(color, percentPlayed);
+
   return (
     <View style={{ ...styles.container }}>
       <View style={{ ...styles.screw, ...styles.screwTopLeft }}>
@@ -52,19 +58,66 @@ export default function Cassette({ month, year, color, percentPlayed }: any) {
           <View style={styles.sideContainer}>
             <Text style={styles.side}>A</Text>
           </View>
+          <View style={styles.stripe} />
           <View style={styles.topTextContainer}>
             <Text style={styles.topText}>
               200 S. Broadway - Greenville, Ohio 45331
             </Text>
           </View>
           <View style={styles.middle}>
-            <View />
+            <View style={styles.circle}>
+              <View style={styles.teethContainer}>
+                <View style={{ ...styles.teeth }} />
+                <View
+                  style={{ ...styles.teeth, transform: [{ rotate: '60deg' }] }}
+                />
+                <View
+                  style={{ ...styles.teeth, transform: [{ rotate: '-60deg' }] }}
+                />
+              </View>
+            </View>
+            <View style={styles.windowOuter}>
+              <View style={styles.windowInner}>
+                <View
+                  style={{
+                    ...styles.tape,
+                    width: leftReel,
+                    height: leftReel,
+                    left: -31 - leftReel / 2,
+                    top: 13 - leftReel / 2,
+                  }}
+                />
+                <View style={styles.reelLeft} />
+                <View
+                  style={{
+                    ...styles.tape,
+                    width: rightReel,
+                    height: rightReel,
+                    right: -31 - rightReel / 2,
+                    top: 13 - rightReel / 2,
+                  }}
+                />
+                <View style={styles.reelRight} />
+              </View>
+            </View>
+            <View style={styles.circle}>
+              <View style={styles.teethContainer}>
+                <View style={{ ...styles.teeth }} />
+                <View
+                  style={{ ...styles.teeth, transform: [{ rotate: '60deg' }] }}
+                />
+                <View
+                  style={{ ...styles.teeth, transform: [{ rotate: '-60deg' }] }}
+                />
+              </View>
+            </View>
           </View>
           <View style={styles.bottomTextContainer}>
             <Text style={styles.bottomText}>{`KMRT ${month} ${year}`}</Text>
           </View>
         </View>
       </View>
+      <View style={styles.cassetteBottom}></View>
     </View>
   );
 }
@@ -74,6 +127,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottomTextContainer: {},
+  cassetteBottom: {},
+  circle: {
+    margin: 10,
+    width: 35,
+    height: 35,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderLeftWidth: 2,
+    borderColor: 'grey',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     backgroundColor: 'tan',
     borderRadius: 8,
@@ -83,6 +149,27 @@ const styles = StyleSheet.create({
     height: 50,
     marginHorizontal: 16,
     borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  reelLeft: {
+    backgroundColor: 'white',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    left: -93,
+    top: -37.5,
+    position: 'absolute',
+  },
+  reelRight: {
+    backgroundColor: 'white',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    right: -93,
+    top: -37.5,
+    position: 'absolute',
   },
   screw: {
     position: 'absolute',
@@ -160,11 +247,44 @@ const styles = StyleSheet.create({
   },
   stickerOuter: {
     margin: 20,
-    borderTopColor: 'grey',
-    borderTopWidth: 3,
-    borderBottomColor: 'white',
-    borderBottomWidth: 2,
+    marginBottom: 40,
+    borderColor: 'grey',
+    borderTopWidth: 2,
+    borderLeftWidth: 0.2,
+    borderRightColor: 'lightgrey',
+    borderRightWidth: 0.2,
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: 1,
     borderRadius: 10,
+  },
+  stripe: {
+    borderColor: colors.cassettePrimary,
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    height: 12,
+    width: '100%',
+    top: 70,
+  },
+  tape: {
+    position: 'absolute',
+    backgroundColor: '#4d3b3b',
+    borderRadius: 999,
+  },
+  teeth: {
+    position: 'absolute',
+    borderColor: 'white',
+    borderLeftWidth: 4,
+    borderRightWidth: 4,
+    height: 4,
+    width: '100%',
+    top: 11,
+  },
+  teethContainer: {
+    width: 26,
+    height: 26,
+    backgroundColor: colors.electronicLight,
+    borderRadius: 30,
+    position: 'relative',
   },
   topText: {
     textAlign: 'center',
@@ -173,6 +293,32 @@ const styles = StyleSheet.create({
   topTextContainer: {
     paddingVertical: 8,
     paddingHorizontal: 40,
+  },
+  windowOuter: {
+    height: 35,
+    flex: 1,
+    padding: 3,
+    borderRadius: 5,
+    borderColor: 'lightgrey',
+    borderTopWidth: 1,
+    borderLeftWidth: 0.5,
+    borderRightColor: 'grey',
+    borderRightWidth: 0.5,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+  },
+  windowInner: {
+    position: 'relative',
+    overflow: 'hidden',
+    borderColor: 'grey',
+    borderTopWidth: 1,
+    borderLeftWidth: 0.5,
+    borderRightColor: 'lightgrey',
+    borderRightWidth: 0.5,
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: 1,
+    height: '100%',
+    backgroundColor: colors.electronicLight,
   },
 });
 
