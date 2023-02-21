@@ -153,7 +153,12 @@ export default function Cassette({
           </View>
         </View>
       </View>
-      <View style={styles.cassetteBottom}></View>
+      <View style={styles.cassetteBottom}>
+        <View style={styles.holeRoundLeft} />
+        <View style={styles.holeRoundRight} />
+        <View style={styles.holeSquareLeft} />
+        <View style={styles.holeSquareRight} />
+      </View>
     </View>
   );
 }
@@ -163,7 +168,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottomTextContainer: {},
-  cassetteBottom: {},
+  cassetteBottom: {
+    borderColor: 'transparent',
+    borderBottomColor: 'peru',
+    borderLeftWidth: 6,
+    borderRightWidth: 6,
+    borderBottomWidth: 30,
+    position: 'absolute',
+    bottom: 0,
+    left: 40,
+    right: 40,
+  },
   circle: {
     margin: 10,
     width: 35,
@@ -180,6 +195,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'tan',
     borderRadius: 8,
   },
+  holeRoundLeft: {
+    backgroundColor: 'grey',
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    position: 'absolute',
+    top: 15,
+    left: 15,
+    borderColor: 'white',
+    borderTopWidth: 2,
+    borderLeftWidth: 1,
+  },
+  holeRoundRight: {
+    backgroundColor: 'grey',
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    position: 'absolute',
+    top: 15,
+    right: 15,
+    borderColor: 'white',
+    borderTopWidth: 2,
+    borderLeftWidth: 1,
+  },
+  holeSquareLeft: {},
+  holeSquareRight: {},
   middle: {
     backgroundColor: 'tan',
     height: 50,
