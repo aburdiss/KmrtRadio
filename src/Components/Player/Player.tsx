@@ -69,13 +69,7 @@ export default function Player() {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Cassette month={state.month} year={state.year} />
-        {/* <Image
-          source={{
-            uri: tracks?.[state.month]?.[state.year]?.[state.trackIndex]?.img,
-          }}
-          style={styles.image}
-        /> */}
+        <Cassette month={state.month} year={state.year} playing={isPlaying} />
       </View>
       <View style={styles.screen}>
         <View style={styles.pickerContainer}>

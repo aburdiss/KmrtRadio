@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Animated, Easing } from 'react-native';
 
 import Text from '../../BaseComponents/Text/Text';
 import { colors } from '../../Model/Model';
@@ -13,10 +13,10 @@ import { colors } from '../../Model/Model';
  * Created 1/17/23 by Alexander Burdiss
  * @param {Object} props JSX props passed to this React Component
  * @param {string} props.month The month that this cassette should render
- * @param {string} props.color The background color of this cassette
  * @param {number} props.percentPlayed A number between 0 and 100 that is the
  * current percent that this cassette is played through. This is kept up to
  * date with the music as the status bar
+ * @param {boolean} props.playing Whether the cassette is playing or not
  * @returns {JSX.Element} JSX render instructions
  * @see https://codepen.io/tomhazledine/pen/RwxeVw
  *
@@ -25,11 +25,37 @@ import { colors } from '../../Model/Model';
  * @since 2/2/23
  * @version 1.0.1
  */
-export default function Cassette({ month, year, color, percentPlayed }: any) {
-  const leftReel = 100;
-  const rightReel = 150;
+export default function Cassette({
+  month,
+  year,
+  percentPlayed = 0,
+  playing,
+}: any) {
+  // Calculate Reel sizes
+  const rightReel = percentPlayed + 85;
+  const leftReel = 185 - percentPlayed;
 
-  console.log(color, percentPlayed);
+  // Handle Animation
+  const spinValue = new Animated.Value(1);
+  const animation = Animated.loop(
+    Animated.timing(spinValue, {
+      toValue: 0,
+      duration: 3000,
+      easing: Easing.linear, // Easing is an additional import from react-native
+      useNativeDriver: true, // To make use of native driver for performance
+    }),
+  );
+  if (playing) {
+    // First set up animation
+    animation.start();
+  } else {
+    animation.stop();
+  }
+  // Next, interpolate beginning and end values (in this case 0 and 1)
+  const spin = spinValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
 
   return (
     <View style={{ ...styles.container }}>
@@ -66,15 +92,20 @@ export default function Cassette({ month, year, color, percentPlayed }: any) {
           </View>
           <View style={styles.middle}>
             <View style={styles.circle}>
-              <View style={styles.teethContainer}>
-                <View style={{ ...styles.teeth }} />
+              <Animated.View
+                style={{
+                  ...styles.teethContainer,
+                  transform: [{ rotate: spin }],
+                }}
+              >
+                <View style={styles.teeth} />
                 <View
                   style={{ ...styles.teeth, transform: [{ rotate: '60deg' }] }}
                 />
                 <View
                   style={{ ...styles.teeth, transform: [{ rotate: '-60deg' }] }}
                 />
-              </View>
+              </Animated.View>
             </View>
             <View style={styles.windowOuter}>
               <View style={styles.windowInner}>
@@ -101,15 +132,20 @@ export default function Cassette({ month, year, color, percentPlayed }: any) {
               </View>
             </View>
             <View style={styles.circle}>
-              <View style={styles.teethContainer}>
-                <View style={{ ...styles.teeth }} />
+              <Animated.View
+                style={{
+                  ...styles.teethContainer,
+                  transform: [{ rotate: spin }],
+                }}
+              >
+                <View style={styles.teeth} />
                 <View
                   style={{ ...styles.teeth, transform: [{ rotate: '60deg' }] }}
                 />
                 <View
                   style={{ ...styles.teeth, transform: [{ rotate: '-60deg' }] }}
                 />
-              </View>
+              </Animated.View>
             </View>
           </View>
           <View style={styles.bottomTextContainer}>
@@ -325,6 +361,6 @@ const styles = StyleSheet.create({
 Cassette.propTypes = {
   month: PropTypes.string,
   year: PropTypes.string,
-  color: PropTypes.string,
   percentPlayed: PropTypes.number,
+  playing: PropTypes.bool,
 };
