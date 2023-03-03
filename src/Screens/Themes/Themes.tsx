@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import CassetteBoxTop from '../../Components/CassetteBoxTop/CassetteBoxTop';
+
+import { colors } from '../../Model/Model';
 
 /**
  * @function Themes
@@ -15,8 +18,33 @@ import { View, Text } from 'react-native';
  */
 export default function Themes() {
   return (
-    <View>
-      <Text>Themes</Text>
+    <View style={styles.container}>
+      <View style={styles.containerInner}>
+        <Text>Themes</Text>
+        <CassetteBoxTop label={'Test Theme Name'} />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.electronicDark,
+    margin: 16,
+    padding: 16,
+    borderRadius: 8,
+    borderBottomWidth: 3,
+    borderBottomColor: colors.electronicLight,
+    borderRightWidth: 3,
+    borderRightColor: colors.electronicLight,
+  },
+  containerInner: {
+    backgroundColor: colors.electronicDark,
+    padding: 16,
+    borderTopWidth: 8,
+    borderTopColor: colors.electronicLight,
+    borderLeftWidth: 8,
+    borderLeftColor: colors.electronicLight,
+    height: '100%',
+  },
+});
