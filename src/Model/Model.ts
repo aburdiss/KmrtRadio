@@ -19,6 +19,7 @@ const namedColors = {
   delta: '#ADADAA',
   norway: '#A6C7A0',
   hibiscus: '#C83361',
+  matterhorn: '#4d3b3b',
 };
 export const colors = {
   background1: namedColors.white,
@@ -44,10 +45,12 @@ export const colors = {
   screen: namedColors.norway,
 
   cassettePrimary: namedColors.hibiscus,
+  cassetteTape: namedColors.matterhorn,
 
   typescriptColor: '#3178c6',
   reactColor: '#61dafb',
   white: namedColors.white,
+  black: namedColors.black,
 };
 
 export const fonts = {
