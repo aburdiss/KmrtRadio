@@ -11,7 +11,7 @@
  * @see {https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#stackoverflow-archive-begin}
  * @since 3/3/23
  */
-export function shadeHexColor(color, percent) {
+export function shadeHexColor(color: string, percent: number): string {
   var f = parseInt(color.slice(1), 16),
     t = percent < 0 ? 0 : 255,
     p = percent < 0 ? percent * -1 : percent,

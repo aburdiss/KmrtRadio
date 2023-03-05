@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import HomePage from './HomePage/HomePage';
+import AboutPage from './AboutPage/AboutPage';
+import LicensesPage from './LicensesPage/LicensesPage';
 
 import { colors } from '../../Model/Model';
 import { PAGES } from './pages';
-import AboutPage from './AboutPage/AboutPage';
-import LicensesPage from './LicensesPage/LicensesPage';
 
 /**
  * @namespace Explorer
