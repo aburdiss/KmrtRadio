@@ -29,8 +29,8 @@ export const summer = {
 
 export const iceCream = {
   appBackground: namedColors.iceCreamPink,
-  cassette: namedColors.iceCreamBlue,
-  cassetteStripe: namedColors.iceCreamRed,
+  cassette: namedColors.iceCreamRed,
+  cassetteStripe: namedColors.iceCreamBlue,
 };
 
 export const jazz = {

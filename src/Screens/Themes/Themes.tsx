@@ -22,7 +22,7 @@ import { THEMES } from '../../Model/themes';
  * @version 1.0.0
  */
 export default function Themes() {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   return (
     <View style={styles.container}>
       <View style={styles.containerInner}>
@@ -31,11 +31,12 @@ export default function Themes() {
         </View>
         <ScrollView style={styles.scrollview}>
           <CassetteBoxTop
-            label={'Department Store'}
+            label={'Dept. Store'}
             color={colors.primary0}
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.KMRT });
             }}
+            active={state.theme === THEMES.KMRT}
           />
           <CassetteBoxTop
             label={'Ice Water'}
@@ -43,6 +44,7 @@ export default function Themes() {
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JAZZ });
             }}
+            active={state.theme === THEMES.JAZZ}
           />
           <CassetteBoxTop
             label={'Neon Nights'}
@@ -50,6 +52,7 @@ export default function Themes() {
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.NEON });
             }}
+            active={state.theme === THEMES.NEON}
           />
           <CassetteBoxTop
             label={'Jukebox'}
@@ -57,6 +60,7 @@ export default function Themes() {
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JUKEBOX });
             }}
+            active={state.theme === THEMES.JUKEBOX}
           />
           <CassetteBoxTop
             label={'Sunscreen'}
@@ -64,6 +68,7 @@ export default function Themes() {
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.SUMMER });
             }}
+            active={state.theme === THEMES.SUMMER}
           />
           <CassetteBoxTop
             label={'Banana Split'}
@@ -71,6 +76,7 @@ export default function Themes() {
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.ICE_CREAM });
             }}
+            active={state.theme === THEMES.ICE_CREAM}
           />
         </ScrollView>
       </View>

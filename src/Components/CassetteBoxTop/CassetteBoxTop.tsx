@@ -22,6 +22,7 @@ import { getContrast } from '../../utils/getContrast';
  * box
  * @param {Function} props.onPress A function to call when this component is
  * pressed
+ * @param {boolean} props.active Whether or not this theme is active
  * @returns {JSX.Element} JSX render instructions
  *
  * @copyright 2023 Alexander Burdiss
@@ -33,6 +34,7 @@ export default function CassetteBoxTop({
   label,
   color = colors.primary0,
   onPress,
+  active,
 }: any) {
   const isDarkColor = getContrast(color) === getContrast('#000');
   return (
@@ -54,12 +56,19 @@ export default function CassetteBoxTop({
                 backgroundColor: color,
               }}
             >
-              <View>
+              <View style={styles.nameContainer}>
                 <Text
                   style={{ ...styles.labelText, color: getContrast(color) }}
                 >
                   {label?.toUpperCase()}
                 </Text>
+                {active && (
+                  <IonIcons
+                    name="checkmark"
+                    color={getContrast(color)}
+                    size={20}
+                  />
+                )}
               </View>
               <View style={styles.bottomText}>
                 <Text
@@ -122,6 +131,7 @@ CassetteBoxTop.propTypes = {
   label: PropTypes.string,
   color: PropTypes.string,
   onPress: PropTypes.func,
+  active: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -196,6 +206,9 @@ const styles = StyleSheet.create({
   },
   modelNumber: {
     fontSize: 12,
+  },
+  nameContainer: {
+    flexDirection: 'row',
   },
   outerContainer: {
     height: '100%',

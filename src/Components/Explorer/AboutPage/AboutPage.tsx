@@ -16,6 +16,11 @@ export default function AboutPage({ setScreenPage }: any) {
         department store in America in the Early 90s.
       </Text>
       <Text />
+      <Text>
+        Similar to the experience you would get in the store, you cannot scrub
+        these audio tracks. You can only jump around to different times.
+      </Text>
+      <Text />
       <Text>All Audio is sourced and streams from the Internet Archive.</Text>
     </View>
   );
