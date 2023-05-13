@@ -43,6 +43,7 @@ jest.mock('react-native-track-player', () => ({
   }),
   useTrackPlayerEvents: jest.fn(),
   usePlaybackState: () => true,
+  useProgress: () => ({}),
   State: {
     playing: true,
   },

@@ -27,11 +27,12 @@ export default function Themes() {
           <Text style={styles.title}>S. S. Kresge Tape Collection</Text>
         </View>
         <ScrollView style={styles.scrollview}>
-          <CassetteBoxTop label={'Test Theme Name'} color={'#A30000'} />
-          <CassetteBoxTop label={'Test Theme Name'} color={'#3587A4'} />
-          <CassetteBoxTop label={'Test Theme Name'} color={'#FFA69E'} />
-          <CassetteBoxTop label={'Test Theme Name'} color={'#D8FFDD'} />
-          <CassetteBoxTop label={'Test Theme Name'} color={'#61C9A8'} />
+          <CassetteBoxTop label={'Department Store'} color={colors.primary0} />
+          <CassetteBoxTop label={'Ice Water'} color={'#0CCDDB'} />
+          <CassetteBoxTop label={'Neon Nights'} color={'#E433D0'} />
+          <CassetteBoxTop label={'Jukebox'} color={'#DE5433'} />
+          <CassetteBoxTop label={'Sunscreen'} color={'#f9ff9b'} />
+          <CassetteBoxTop label={'Banana Split'} color={'#F1A9BE'} />
         </ScrollView>
       </View>
     </View>

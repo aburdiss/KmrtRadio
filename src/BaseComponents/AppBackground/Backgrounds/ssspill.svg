@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 325 100"><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ssspill-grad"><stop stop-color="#F6CFC7" stop-opacity="1" offset="45%"></stop><stop stop-color="#F1ACBF" stop-opacity="1" offset="100%"></stop></linearGradient></defs><rect width="100%" height="100%" fill="#ABDFDC"></rect><g fill="url(#ssspill-grad)">
+    <rect width="100%" height="40" fill="#F6CFC7"></rect>
+
+    <rect x="0" width="4.3478%" height="79.27717076710641" rx="12"></rect>
+      <rect x="8.695652174%" width="4.3478%" height="72.07713361651857" rx="12"></rect>
+      <rect x="17.391304348%" width="4.3478%" height="74.94508948576609" rx="12"></rect>
+      <rect x="26.086956521999998%" width="4.3478%" height="96.15195121938976" rx="12"></rect>
+      <rect x="34.782608696%" width="4.3478%" height="76.04395488995479" rx="12"></rect>
+      <rect x="43.47826087%" width="4.3478%" height="76.0112617857787" rx="12"></rect>
+      <rect x="52.173913043999995%" width="4.3478%" height="76.26038457673305" rx="12"></rect>
+      <rect x="60.86956521799999%" width="4.3478%" height="89.56366230827234" rx="12"></rect>
+      <rect x="69.565217392%" width="4.3478%" height="78.7150057955652" rx="12"></rect>
+      <rect x="78.260869566%" width="4.3478%" height="90.30815406799356" rx="12"></rect>
+      <rect x="86.95652174%" width="4.3478%" height="86.64161849469463" rx="12"></rect>
+      <rect x="95.65217391399999%" width="4.3478%" height="81.37431238098848" rx="12"></rect>
+  </g><g fill="#ABDFDC">
+    <rect x="4.3478%" y="16.566199651711067" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="13.043478260999999%" y="16.668914495848036" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="21.739130435%" y="18.87236388669743" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="30.434782608999996%" y="25.771050088998273" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="39.130434783%" y="20.02891272431139" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="47.826086956999994%" y="8.316503857618617" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="56.521739131%" y="2.334068856741968" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="65.21739130499999%" y="12.3771352599007" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="73.913043479%" y="21.11640872502223" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="82.608695653%" y="19.008646650814462" width="4.3478%" height="60" rx="12"></rect>
+      <rect x="91.30434782699999%" y="11.263796383358665" width="4.3478%" height="60" rx="12"></rect>
+  </g></svg>

@@ -5,6 +5,7 @@ import TrackPlayer, {
   useTrackPlayerEvents,
   Event,
   State,
+  useProgress,
 } from 'react-native-track-player';
 import { Picker } from '@react-native-picker/picker';
 
@@ -39,6 +40,10 @@ export default function Player() {
   const playerState = usePlaybackState();
   const isPlaying = playerState === State.Playing;
 
+  const { position, duration } = useProgress();
+  const CURRENT_POSITION =
+    duration === 0 ? 50 : Math.floor((position * 100) / duration);
+
   const { state, dispatch } = useContext(AppContext);
 
   useTrackPlayerEvents([Event.PlaybackTrackChanged], async (event) => {
@@ -69,7 +74,12 @@ export default function Player() {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Cassette month={state.month} year={state.year} playing={isPlaying} />
+        <Cassette
+          month={state.month}
+          year={state.year}
+          playing={isPlaying}
+          percentPlayed={CURRENT_POSITION}
+        />
       </View>
       <View style={styles.screen}>
         <View style={styles.pickerContainer}>

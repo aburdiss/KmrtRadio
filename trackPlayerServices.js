@@ -55,6 +55,14 @@ export async function addTracks(tracks) {
   if (tracks) {
     await TrackPlayer.reset();
     await TrackPlayer.add(tracks);
+    const CURRENT_TIME = new Date().toLocaleTimeString('en-us', {
+      minute: 'numeric',
+      second: 'numeric',
+    });
+    const NUMBER_OF_SECONDS_TO_SEEK =
+      Number(CURRENT_TIME.split(':')[0]) * 60 +
+      Number(CURRENT_TIME.split(':')[1]);
+    await TrackPlayer.seekTo(NUMBER_OF_SECONDS_TO_SEEK);
     await TrackPlayer.play();
   }
 }

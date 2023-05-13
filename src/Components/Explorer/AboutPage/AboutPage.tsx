@@ -11,7 +11,12 @@ export default function AboutPage({ setScreenPage }: any) {
   return (
     <View>
       <BackButton onPress={() => setScreenPage(PAGES.HOME)} />
-      <Text>About</Text>
+      <Text>
+        The KMRT Radio App streams audio that originally played in a major
+        department store in America in the Early 90s.
+      </Text>
+      <Text />
+      <Text>All Audio is sourced and streams from the Internet Archive.</Text>
     </View>
   );
 }
