@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getCurrentMonth } from '../utils/getCurrentMonth';
 import { getYearsForMonth } from '../utils/getYearsForMonth';
 import { randomFromArray } from '../utils/randomFromArray';
@@ -14,10 +15,10 @@ export enum ACTIONS {
 }
 
 type AppState = {
-  month: string;
-  year: string;
-  trackIndex: number;
-  theme: THEMES;
+  month?: string;
+  year?: string;
+  trackIndex?: number;
+  theme?: THEMES;
 };
 
 const initialState: AppState = {
@@ -34,6 +35,42 @@ export const AppContext = createContext<{
   state: initialState,
   dispatch: () => null,
 });
+
+/**
+ * @function load
+ * @description Loads Data from Local Storage
+ * @author Alexander Burdiss
+ * @since 12/11/20
+ * @version 1.0.2
+ * @param {string} type Type of data to load.
+ * @returns {JSON|null} The stored value or null, depending on if the data is
+ * successfully retrieved.
+ */
+export async function load() {
+  try {
+    const jsonValue = await AsyncStorage.getItem('preferences');
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+/**
+ * @function save
+ * @description Stores Data in Local Storage
+ * @author Alexander Burdiss
+ * @since 12/11/20
+ * @version 1.0.1
+ * @param {Object} data Data to be stored in local storage
+ */
+export async function save(data: Object) {
+  try {
+    const jsonValue = JSON.stringify(data);
+    await AsyncStorage.setItem('preferences', jsonValue);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 /**
  * @function appReducer
@@ -55,10 +92,10 @@ function appReducer(
   state: AppState,
   action: {
     type: ACTIONS;
-    month: string;
-    year: string;
-    trackIndex: number;
-    theme: THEMES;
+    month?: string;
+    year?: string;
+    trackIndex?: number;
+    theme?: THEMES;
   },
 ): AppState {
   switch (action.type) {
@@ -79,6 +116,7 @@ function appReducer(
         trackIndex: action.trackIndex,
       };
     case ACTIONS.SET_THEME:
+      save({ theme: action.theme });
       return {
         ...state,
         theme: action.theme,
@@ -104,7 +142,15 @@ function appReducer(
 export function AppProvider({ children }: any) {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  useEffect(function loadSettingsFromLocalStorage() {}, []);
+  useEffect(function loadSettingsFromLocalStorage() {
+    load().then((data) => {
+      if (data !== null) {
+        dispatch({ type: ACTIONS.SET_THEME, theme: data.theme });
+      } else {
+        dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.KMRT });
+      }
+    });
+  }, []);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
