@@ -1,26 +1,30 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { getCurrentMonth } from '../utils/getCurrentMonth';
 import { getYearsForMonth } from '../utils/getYearsForMonth';
 import { randomFromArray } from '../utils/randomFromArray';
+import { THEMES } from '../Model/themes';
 
 export enum ACTIONS {
   SET_YEAR,
   SET_MONTH,
   SET_MONTH_AND_YEAR,
   SET_TRACK_INDEX,
+  SET_THEME,
 }
 
 type AppState = {
   month: string;
   year: string;
   trackIndex: number;
+  theme: THEMES;
 };
 
 const initialState: AppState = {
   month: getCurrentMonth(),
   year: randomFromArray(getYearsForMonth(getCurrentMonth())),
   trackIndex: 0,
+  theme: THEMES.KMRT,
 };
 
 export const AppContext = createContext<{
@@ -49,7 +53,13 @@ export const AppContext = createContext<{
  */
 function appReducer(
   state: AppState,
-  action: { type: ACTIONS; month: string; year: string; trackIndex: number },
+  action: {
+    type: ACTIONS;
+    month: string;
+    year: string;
+    trackIndex: number;
+    theme: THEMES;
+  },
 ): AppState {
   switch (action.type) {
     case ACTIONS.SET_MONTH:
@@ -67,6 +77,11 @@ function appReducer(
       return {
         ...state,
         trackIndex: action.trackIndex,
+      };
+    case ACTIONS.SET_THEME:
+      return {
+        ...state,
+        theme: action.theme,
       };
     default:
       throw new Error(`Unknown Action: ${action.type}`);
@@ -88,6 +103,8 @@ function appReducer(
  */
 export function AppProvider({ children }: any) {
   const [state, dispatch] = useReducer(appReducer, initialState);
+
+  useEffect(function loadSettingsFromLocalStorage() {}, []);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

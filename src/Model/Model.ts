@@ -1,4 +1,4 @@
-const namedColors = {
+export const namedColors = {
   white: '#ffffff',
   black: '#000000',
   brightRed: '#a30000',
@@ -15,11 +15,45 @@ const namedColors = {
   darkBlue: '#0000aa',
   persianBlue: '#3020dd',
 
+  // Electronic Colors
   gray: '#808080',
   delta: '#ADADAA',
   norway: '#A6C7A0',
   hibiscus: '#C83361',
   matterhorn: '#4d3b3b',
+
+  // Neon Colors
+  neonDarkBlue: '#3505F3',
+  neonGreen: '#72F555',
+  neonBlue: '#5CC7EF',
+  neonPink: '#E433D0',
+  neonYellow: '#D8F550',
+
+  // Summer Colors
+  summerRed: '#EB5149',
+  summerPink: '#F4BBBA',
+  summerYellow: '#FAFFA7',
+  summerBlue: '#73D8DD',
+  summerGreen: '#C5FDA9',
+
+  // Ice Cream Colors
+  iceCreamRed: '#F1ACBF',
+  iceCreamPink: '#F6CFC7',
+  iceCreamBlue: '#6CBDB2',
+  iceCreamLightBlue: '#ABDFDC',
+  iceCreamGreen: '#6EC79C',
+
+  // Jazz Colors
+  jazzPink: '#871CA1',
+  jazzPurple: '#2C1679',
+  jazzBlue: '#0CCDDB',
+
+  // Jukebox Colors
+  jukeboxRed: '#DE5433',
+  jukeboxYellow: '#ECC47E',
+  jukeboxWhite: '#F4E8C8',
+  jukeboxPink: '#D398C4',
+  jukeboxPurple: '#94487F',
 };
 export const colors = {
   background1: namedColors.white,
@@ -44,7 +78,6 @@ export const colors = {
   text: namedColors.black,
   screen: namedColors.norway,
 
-  cassettePrimary: namedColors.hibiscus,
   cassetteTape: namedColors.matterhorn,
 
   typescriptColor: '#3178c6',

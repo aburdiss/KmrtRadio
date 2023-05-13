@@ -2,10 +2,15 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 // import Burst from './Backgrounds/Burst';
 import Speckled from './Backgrounds/Speckled';
+import { useTheme } from '../../utils/useTheme';
 
 export default function AppBackground() {
+  const theme = useTheme();
+
   return (
-    <View style={styles.background}>
+    <View
+      style={{ ...styles.background, backgroundColor: theme.appBackground }}
+    >
       <Speckled />
       {/* <Burst /> */}
     </View>

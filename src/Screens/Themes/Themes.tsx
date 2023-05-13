@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 
 import Text from '../../BaseComponents/Text/Text';
@@ -6,6 +6,8 @@ import CassetteBoxTop from '../../Components/CassetteBoxTop/CassetteBoxTop';
 
 import { colors } from '../../Model/Model';
 import { shadeHexColor } from '../../utils/shadeHexColor';
+import { ACTIONS, AppContext } from '../../Contexts/AppContext';
+import { THEMES } from '../../Model/themes';
 
 /**
  * @function Themes
@@ -20,6 +22,7 @@ import { shadeHexColor } from '../../utils/shadeHexColor';
  * @version 1.0.0
  */
 export default function Themes() {
+  const { dispatch } = useContext(AppContext);
   return (
     <View style={styles.container}>
       <View style={styles.containerInner}>
@@ -27,12 +30,48 @@ export default function Themes() {
           <Text style={styles.title}>S. S. Kresge Tape Collection</Text>
         </View>
         <ScrollView style={styles.scrollview}>
-          <CassetteBoxTop label={'Department Store'} color={colors.primary0} />
-          <CassetteBoxTop label={'Ice Water'} color={'#0CCDDB'} />
-          <CassetteBoxTop label={'Neon Nights'} color={'#E433D0'} />
-          <CassetteBoxTop label={'Jukebox'} color={'#DE5433'} />
-          <CassetteBoxTop label={'Sunscreen'} color={'#f9ff9b'} />
-          <CassetteBoxTop label={'Banana Split'} color={'#F1A9BE'} />
+          <CassetteBoxTop
+            label={'Department Store'}
+            color={colors.primary0}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.KMRT });
+            }}
+          />
+          <CassetteBoxTop
+            label={'Ice Water'}
+            color={'#0CCDDB'}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JAZZ });
+            }}
+          />
+          <CassetteBoxTop
+            label={'Neon Nights'}
+            color={'#E433D0'}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.NEON });
+            }}
+          />
+          <CassetteBoxTop
+            label={'Jukebox'}
+            color={'#DE5433'}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JUKEBOX });
+            }}
+          />
+          <CassetteBoxTop
+            label={'Sunscreen'}
+            color={'#f9ff9b'}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.SUMMER });
+            }}
+          />
+          <CassetteBoxTop
+            label={'Banana Split'}
+            color={'#F1A9BE'}
+            onPress={() => {
+              dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.ICE_CREAM });
+            }}
+          />
         </ScrollView>
       </View>
     </View>
