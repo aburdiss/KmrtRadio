@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import TrackPlayer, {
   usePlaybackState,
@@ -10,17 +10,17 @@ import TrackPlayer, {
 import { Picker } from '@react-native-picker/picker';
 
 import Text from '../../BaseComponents/Text/Text';
-
-import { getYearsForMonth } from '../../utils/getYearsForMonth';
-import { translate } from '../../translations/TranslationModel';
-
-import { colors, tracks } from '../../Model/Model';
-
-import { addTracks } from '../../../trackPlayerServices';
-import { getTracks } from '../../utils/getTracks';
 import { AppContext, ACTIONS } from '../../Contexts/AppContext';
 import PlayerButton from './PlayerButton/PlayerButton';
 import Cassette from '../Cassette/Cassette';
+
+import { translate } from '../../translations/TranslationModel';
+import { colors, tracks } from '../../Model/Model';
+import { addTracks } from '../../../trackPlayerServices';
+
+import { getYearsForMonth } from '../../utils/getYearsForMonth';
+import { getTracks } from '../../utils/getTracks';
+import { seekToCurrentTime } from '../../utils/seekToCurrentTime';
 
 /**
  * @function Player
@@ -39,6 +39,8 @@ import Cassette from '../Cassette/Cassette';
 export default function Player() {
   const playerState = usePlaybackState();
   const isPlaying = playerState === State.Playing;
+  const [clickedPause, setClickedPause] = useState(false);
+  const [currentQueue, setCurrentQueue] = useState([]);
 
   const { position, duration } = useProgress();
   const CURRENT_POSITION =
@@ -59,7 +61,7 @@ export default function Player() {
     function updateTrack() {
       if (state.month && state.year) {
         const newTracks = getTracks(state.month, state.year);
-        console.log('update', newTracks);
+        setCurrentQueue(newTracks);
         addTracks(newTracks);
       }
     },
@@ -77,6 +79,7 @@ export default function Player() {
         <Cassette
           month={state.month}
           year={state.year}
+          number={`${(state.trackIndex ?? 0) + 1} / ${currentQueue.length}`}
           playing={isPlaying}
           percentPlayed={CURRENT_POSITION}
         />
@@ -123,15 +126,31 @@ export default function Player() {
         <PlayerButton
           label={translate('Back')}
           icon="play-back-sharp"
-          onPress={() => TrackPlayer.skipToPrevious()}
+          onPress={async () => {
+            await TrackPlayer.skipToPrevious();
+            await seekToCurrentTime();
+          }}
+          disabled={(() => {
+            if (currentQueue.length <= 1) {
+              return true;
+            }
+            if (state.trackIndex === 0) {
+              return true;
+            }
+            return false;
+          })()}
         />
         <PlayerButton
           label={isPlaying ? translate('Pause') : translate('Play')}
-          icon={isPlaying ? 'pause-sharp' : 'play-sharp'}
+          icon={
+            isPlaying ? 'pause-sharp' : clickedPause ? 'play-sharp' : 'loading'
+          }
           onPress={() => {
             if (isPlaying) {
+              setClickedPause(true);
               TrackPlayer.pause();
             } else {
+              setClickedPause(false);
               TrackPlayer.play();
             }
           }}
@@ -139,7 +158,19 @@ export default function Player() {
         <PlayerButton
           label={translate('Next')}
           icon="play-forward-sharp"
-          onPress={() => TrackPlayer.skipToNext()}
+          onPress={async () => {
+            await TrackPlayer.skipToNext();
+            await seekToCurrentTime();
+          }}
+          disabled={(() => {
+            if (currentQueue.length <= 1) {
+              return true;
+            }
+            if (state.trackIndex === currentQueue.length - 1) {
+              return true;
+            }
+            return false;
+          })()}
         />
       </View>
     </View>

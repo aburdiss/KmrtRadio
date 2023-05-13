@@ -19,6 +19,7 @@ import { useTheme } from '../../utils/useTheme';
  * current percent that this cassette is played through. This is kept up to
  * date with the music as the status bar
  * @param {boolean} props.playing Whether the cassette is playing or not
+ * @param {string} props.number The current number track that is playing.
  * @returns {JSX.Element} JSX render instructions
  * @see https://codepen.io/tomhazledine/pen/RwxeVw
  *
@@ -32,6 +33,7 @@ export default function Cassette({
   year,
   percentPlayed = 0,
   playing,
+  number,
 }: any) {
   // Calculate Reel sizes
   const rightReel = percentPlayed + 85;
@@ -284,12 +286,13 @@ export default function Cassette({
       position: 'relative',
     },
     topText: {
-      textAlign: 'center',
-      fontSize: 12,
+      textAlign: 'right',
+      fontSize: 6,
     },
     topTextContainer: {
-      paddingVertical: 8,
-      paddingHorizontal: 40,
+      paddingTop: 12,
+      paddingBottom: 4,
+      paddingHorizontal: 20,
     },
     windowOuter: {
       height: 35,
@@ -344,13 +347,12 @@ export default function Cassette({
       <View style={styles.stickerOuter}>
         <View style={styles.sticker}>
           <View style={styles.sideContainer}>
-            <Text style={styles.side}>A</Text>
+            <Text style={styles.side}>{number}</Text>
           </View>
           <View style={styles.stripe} />
           <View style={styles.topTextContainer}>
-            <Text style={styles.topText}>
-              200 S. Broadway - Greenville, Ohio 45331
-            </Text>
+            <Text style={styles.topText}>200 S. Broadway</Text>
+            <Text style={styles.topText}>Greenville, Ohio 45331</Text>
           </View>
           <View style={styles.middle}>
             <View style={styles.circle}>
@@ -430,4 +432,5 @@ Cassette.propTypes = {
   year: PropTypes.string,
   percentPlayed: PropTypes.number,
   playing: PropTypes.bool,
+  number: PropTypes.string,
 };
