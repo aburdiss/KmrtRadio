@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { SafeAreaView, View, StyleSheet, StatusBar } from 'react-native';
+import type { StatusBarStyle } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import * as RNLocalize from 'react-native-localize';
 import TrackPlayer from 'react-native-track-player';
@@ -22,6 +23,7 @@ import NavigationButton from './src/Components/NavigationButton/NavigationButton
 import { AppContext } from './src/Contexts/AppContext';
 import AppBackground from './src/BaseComponents/AppBackground/AppBackground';
 import { colors } from './src/Model/Model';
+import { THEMES } from './src/Model/themes';
 
 setI18nConfig();
 
@@ -88,9 +90,24 @@ export default function App() {
     return <Loading />;
   }
 
+  const LIGHT_STATUS_BAR = 'light-content';
+  const DARK_STATUS_BAR = 'dark-content';
+
   return (
     <>
       <AppBackground />
+      <StatusBar
+        barStyle={
+          {
+            [THEMES.KMRT]: DARK_STATUS_BAR,
+            [THEMES.JAZZ]: DARK_STATUS_BAR,
+            [THEMES.NEON]: LIGHT_STATUS_BAR,
+            [THEMES.JUKEBOX]: DARK_STATUS_BAR,
+            [THEMES.SUMMER]: DARK_STATUS_BAR,
+            [THEMES.ICE_CREAM]: DARK_STATUS_BAR,
+          }[state.theme ?? THEMES.KMRT] as StatusBarStyle
+        }
+      />
       <SafeAreaView style={styles.container}>
         <View style={styles.navigationButtonsContainer}>
           <View style={styles.keyboard}>

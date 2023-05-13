@@ -47,7 +47,7 @@ export default function Themes() {
             active={state.theme === THEMES.JAZZ}
           />
           <CassetteBoxTop
-            label={'Neon Nights'}
+            label={'Roller Disco'}
             color={'#E433D0'}
             onPress={() => {
               dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.NEON });
