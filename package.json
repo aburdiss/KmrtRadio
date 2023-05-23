@@ -1,6 +1,6 @@
 {
   "name": "kmart-radio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "prepare": "git config core.hooksPath ./scripts/hooks",
