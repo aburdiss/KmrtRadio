@@ -49,6 +49,7 @@ jest.mock('react-native-track-player', () => ({
     playing: true,
   },
   Event: {},
+  Capability: {},
 }));
 
 // jest.mock('react-native-idle-timer', () => ({

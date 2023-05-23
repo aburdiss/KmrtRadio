@@ -6,6 +6,7 @@ import Text from '../../BaseComponents/Text/Text';
 import { colors } from '../../Model/Model';
 import { shadeHexColor } from '../../utils/shadeHexColor';
 import { useTheme } from '../../utils/useTheme';
+import { translate } from '../../translations/TranslationModel';
 
 /**
  * @function Cassette
@@ -413,7 +414,9 @@ export default function Cassette({
             </View>
           </View>
           <View style={styles.bottomTextContainer}>
-            <Text style={styles.bottomText}>{`KMRT ${month} ${year}`}</Text>
+            <Text style={styles.bottomText}>{`KMRT ${translate(
+              month,
+            )} ${year}`}</Text>
           </View>
         </View>
       </View>

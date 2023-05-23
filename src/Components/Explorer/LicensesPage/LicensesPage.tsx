@@ -11,6 +11,7 @@ import { PAGES } from '../pages';
 import data from './licenses.json';
 
 import { getLicenseData } from '../utils/getLicenseData';
+import { translate } from '../../../translations/TranslationModel';
 
 const licenseData = getLicenseData(data);
 
@@ -33,7 +34,7 @@ export default function LicensesPage({ setScreenPage }: any) {
   return (
     <View style={styles.container}>
       <BackButton onPress={() => setScreenPage(PAGES.HOME)} />
-      <Text style={styles.heading}>Licenses</Text>
+      <Text style={styles.heading}>{translate('Licenses')}</Text>
       <FlatList
         style={styles.list}
         keyExtractor={({ key }) => key}

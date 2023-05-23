@@ -27,7 +27,6 @@ export async function setupPlayer() {
         Capability.Pause,
         Capability.SkipToNext,
         Capability.SkipToPrevious,
-        Capability.SeekTo,
       ],
       compactCapabilities: [
         Capability.Play,
@@ -70,12 +69,14 @@ export async function playbackService() {
     TrackPlayer.pause();
   });
 
-  TrackPlayer.addEventListener('remote-next', () => {
-    TrackPlayer.skipToNext();
+  TrackPlayer.addEventListener('remote-next', async () => {
+    await TrackPlayer.skipToNext();
+    await seekToCurrentTime();
   });
 
-  TrackPlayer.addEventListener('remote-previous', () => {
-    TrackPlayer.skipToPrevious();
+  TrackPlayer.addEventListener('remote-previous', async () => {
+    await TrackPlayer.skipToPrevious();
+    await seekToCurrentTime();
   });
 
   TrackPlayer.addEventListener('remote-stop', () => {

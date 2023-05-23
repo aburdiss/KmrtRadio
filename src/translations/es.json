@@ -19,6 +19,15 @@
   "November": "Noviembre",
   "December": "Diciembre",
 
+  "Tape Collection": "Colección de Cintas de S. S. Kresge",
+  "Dept Store": "Tienda Dept.",
+  "Ice Water": "Agua Congelada",
+  "Roller Disco": "Discoteca de rodillos",
+  "Jukebox": "Cena",
+  "Sunscreen": "Protector solar",
+  "Banana Split": "Banana Split",
+  "KMRT Radio": "Radio KMRT",
+
   "About": "Sobre",
   "Licenses": "Licencias",
   "Send Feedback": "Envia Comentarios",
@@ -26,5 +35,10 @@
   "Open Source": "Fuente abierta",
   "React Native Icon": "Icono de React Native",
   "JavaScript Icon": "Icono de JavaScript",
-  "Made with ❤️ in Dayton, Ohio": "Hecho con ❤️ en Dayton, Ohio"
+  "Made with ❤️ in Dayton, Ohio": "Hecho con ❤️ en Dayton, Ohio",
+
+  "About1": "La aplicación KMRT Radio transmite audio que se reproducía originalmente en una importante tienda departamental estadounidense a principios de los 90.",
+  "About2": "De manera similar a la experiencia en la tienda, no puede borrar estas pistas de audio. Solo puedes saltar a diferentes épocas.",
+  "About3": "Algunos meses tenían cintas diferentes para semanas diferentes, y puede pasar de una semana a otra usando las opciones siguiente y anterior, cuando estén disponibles.",
+  "About4": "Todo el audio proviene y se transmite desde Internet Archive."
 }

@@ -8,6 +8,8 @@ import Text from '../../BaseComponents/Text/Text';
 import { colors } from '../../Model/Model';
 import { shadeHexColor } from '../../utils/shadeHexColor';
 import { getContrast } from '../../utils/getContrast';
+import { getIsTinyScreen } from '../../utils/getIsTinyScreen';
+import { translate } from '../../translations/TranslationModel';
 
 /**
  * @function CassetteBoxTop
@@ -37,6 +39,7 @@ export default function CassetteBoxTop({
   active,
 }: any) {
   const isDarkColor = getContrast(color) === getContrast('#000');
+  const TINY_SCREEN = getIsTinyScreen();
   return (
     <Pressable style={styles.pressable} onPress={onPress}>
       {({ pressed }) => (
@@ -74,12 +77,12 @@ export default function CassetteBoxTop({
                 <Text
                   style={{ ...styles.brandText, color: getContrast(color) }}
                 >
-                  KMRT Radio
+                  {translate('KMRT Radio')}
                 </Text>
                 <Text
                   style={{ ...styles.modelNumber, color: getContrast(color) }}
                 >
-                  60296-4
+                  {color.replace('#', '').toUpperCase()}
                 </Text>
               </View>
               <View
@@ -113,12 +116,14 @@ export default function CassetteBoxTop({
                 }}
               />
             </View>
-            <IonIcons
-              style={styles.icon}
-              color={shadeHexColor(color, isDarkColor ? 0.5 : -0.5)}
-              name="musical-notes-sharp"
-              size={25}
-            />
+            {!TINY_SCREEN && (
+              <IonIcons
+                style={styles.icon}
+                color={shadeHexColor(color, isDarkColor ? 0.5 : -0.5)}
+                name="musical-notes-sharp"
+                size={25}
+              />
+            )}
           </View>
           <View style={styles.outerContainer} />
         </View>

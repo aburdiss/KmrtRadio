@@ -5,6 +5,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../../Model/Model';
 import Text from '../../../BaseComponents/Text/Text';
 import { StyleSheet } from 'react-native';
+import { translate } from '../../../translations/TranslationModel';
 
 /**
  * @function BackButton
@@ -25,7 +26,7 @@ export default function BackButton({ onPress }: any) {
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <Ionicon name="caret-back-circle" color={colors.text} size={32} />
-      <Text style={styles.text}>Back</Text>
+      <Text style={styles.text}>{translate('Back')}</Text>
     </Pressable>
   );
 }

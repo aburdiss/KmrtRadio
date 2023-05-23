@@ -6,6 +6,7 @@ import TrackPlayer, {
   Event,
   State,
   useProgress,
+  Capability,
 } from 'react-native-track-player';
 import { Picker } from '@react-native-picker/picker';
 
@@ -15,12 +16,14 @@ import PlayerButton from './PlayerButton/PlayerButton';
 import Cassette from '../Cassette/Cassette';
 
 import { translate } from '../../translations/TranslationModel';
-import { colors, tracks } from '../../Model/Model';
+import { colors, months, tracks } from '../../Model/Model';
 import { addTracks } from '../../../trackPlayerServices';
 
 import { getYearsForMonth } from '../../utils/getYearsForMonth';
 import { getTracks } from '../../utils/getTracks';
 import { seekToCurrentTime } from '../../utils/seekToCurrentTime';
+import { getIsSmallScreen } from '../../utils/getIsSmallScreen';
+import { getIsTinyScreen } from '../../utils/getIsTinyScreen';
 
 /**
  * @function Player
@@ -37,6 +40,79 @@ import { seekToCurrentTime } from '../../utils/seekToCurrentTime';
  * @version 1.1.0
  */
 export default function Player() {
+  const SMALL_SCREEN = getIsSmallScreen();
+  const TINY_SCREEN = getIsTinyScreen();
+
+  const styles = StyleSheet.create({
+    button: {
+      borderColor: 'rgb(43, 44, 48)',
+      backgroundColor: 'rgb(26, 25, 30)',
+      borderWidth: 2,
+      flex: 1,
+      padding: 16,
+      margin: 2,
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+    },
+    buttonInner: {
+      alignItems: 'center',
+    },
+    container: {
+      backgroundColor: colors.electronicDark,
+      marginVertical: TINY_SCREEN ? 8 : 16,
+      marginHorizontal: 16,
+      padding: 16,
+      borderRadius: 8,
+      borderBottomWidth: 3,
+      borderBottomColor: colors.electronicLight,
+      borderRightWidth: 3,
+      borderRightColor: colors.electronicLight,
+    },
+    image: {
+      width: '100%',
+      height: 150,
+      resizeMode: 'cover',
+    },
+    imageContainer: {
+      marginHorizontal: TINY_SCREEN ? -16 : 1,
+      marginTop: TINY_SCREEN ? -16 : 0,
+      padding: SMALL_SCREEN ? 0 : 16,
+      backgroundColor: SMALL_SCREEN ? undefined : colors.electronicLight,
+    },
+    pickerContainer: {
+      flexDirection: 'row',
+      marginVertical: TINY_SCREEN ? -16 : 0,
+    },
+    pickerMonth: {
+      flex: 1,
+    },
+    pickerYear: {
+      width: 120,
+    },
+    playerBrand: {
+      fontSize: 12,
+      fontStyle: 'italic',
+      textShadowColor: colors.cassetteTape,
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 2,
+    },
+    screen: {
+      marginVertical: TINY_SCREEN ? 0 : 8,
+      backgroundColor: colors.screen,
+      borderTopWidth: 2,
+      borderTopColor: colors.electronicLight,
+      borderLeftWidth: 2,
+      borderLeftColor: colors.electronicLight,
+    },
+    topContainer: {
+      flexDirection: 'row',
+      marginBottom: 8,
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+    },
+  });
+
   const playerState = usePlaybackState();
   const isPlaying = playerState === State.Playing;
   const [clickedPause, setClickedPause] = useState(false);
@@ -68,13 +144,46 @@ export default function Player() {
     [state.year, state.month],
   );
 
+  const NEXT_DISABLED = (() => {
+    if (currentQueue.length <= 1) {
+      return true;
+    }
+    if (state.trackIndex === currentQueue.length - 1) {
+      return true;
+    }
+    return false;
+  })();
+
+  const PREVIOUS_DISABLED = (() => {
+    if (currentQueue.length <= 1) {
+      return true;
+    }
+    if (state.trackIndex === 0) {
+      return true;
+    }
+    return false;
+  })();
+
+  const capabilitiesArray = [Capability.Play, Capability.Pause];
+  if (!PREVIOUS_DISABLED) {
+    capabilitiesArray.push(Capability.SkipToPrevious);
+  }
+  if (!NEXT_DISABLED) {
+    capabilitiesArray.push(Capability.SkipToNext);
+  }
+  TrackPlayer.updateOptions({
+    capabilities: capabilitiesArray,
+  });
+
   return (
     <View style={styles.container}>
-      <View style={styles.topContainer}>
-        <View>
-          <Text style={styles.playerBrand}>テープアスン 2000</Text>
+      {!SMALL_SCREEN && (
+        <View style={styles.topContainer}>
+          <View>
+            <Text style={styles.playerBrand}>TAPE-A-THON 2000</Text>
+          </View>
         </View>
-      </View>
+      )}
       <View style={styles.imageContainer}>
         <Cassette
           month={state.month}
@@ -115,7 +224,7 @@ export default function Player() {
                 dispatch({ type: ACTIONS.SET_YEAR, year: itemValue })
               }
             >
-              {getYearsForMonth(state.month)?.map((year) => {
+              {getYearsForMonth(state.month ?? months[0])?.map((year) => {
                 return <Picker.Item label={year} value={year} key={year} />;
               })}
             </Picker>
@@ -130,15 +239,7 @@ export default function Player() {
             await TrackPlayer.skipToPrevious();
             await seekToCurrentTime();
           }}
-          disabled={(() => {
-            if (currentQueue.length <= 1) {
-              return true;
-            }
-            if (state.trackIndex === 0) {
-              return true;
-            }
-            return false;
-          })()}
+          disabled={PREVIOUS_DISABLED}
         />
         <PlayerButton
           label={isPlaying ? translate('Pause') : translate('Play')}
@@ -162,80 +263,9 @@ export default function Player() {
             await TrackPlayer.skipToNext();
             await seekToCurrentTime();
           }}
-          disabled={(() => {
-            if (currentQueue.length <= 1) {
-              return true;
-            }
-            if (state.trackIndex === currentQueue.length - 1) {
-              return true;
-            }
-            return false;
-          })()}
+          disabled={NEXT_DISABLED}
         />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    borderColor: 'rgb(43, 44, 48)',
-    backgroundColor: 'rgb(26, 25, 30)',
-    borderWidth: 2,
-    flex: 1,
-    padding: 16,
-    margin: 2,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-  },
-  buttonInner: {
-    alignItems: 'center',
-  },
-  container: {
-    backgroundColor: colors.electronicDark,
-    margin: 16,
-    padding: 16,
-    borderRadius: 8,
-    borderBottomWidth: 3,
-    borderBottomColor: colors.electronicLight,
-    borderRightWidth: 3,
-    borderRightColor: colors.electronicLight,
-  },
-  image: {
-    width: '100%',
-    height: 150,
-    resizeMode: 'cover',
-  },
-  imageContainer: {
-    marginHorizontal: 1,
-    padding: 16,
-    backgroundColor: colors.electronicLight,
-  },
-  pickerContainer: {
-    flexDirection: 'row',
-  },
-  pickerMonth: {
-    flex: 1,
-  },
-  pickerYear: {
-    width: 120,
-  },
-  playerBrand: {
-    fontSize: 12,
-  },
-  screen: {
-    marginVertical: 8,
-    backgroundColor: colors.screen,
-    borderTopWidth: 2,
-    borderTopColor: colors.electronicLight,
-    borderLeftWidth: 2,
-    borderLeftColor: colors.electronicLight,
-  },
-  topContainer: {
-    flexDirection: 'row',
-    marginBottom: 8,
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
-});

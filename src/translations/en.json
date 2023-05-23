@@ -19,6 +19,15 @@
   "November": "November",
   "December": "December",
 
+  "Tape Collection": "S. S. Kresge Tape Collection",
+  "Dept Store": "Dept. Store",
+  "Ice Water": "Ice Water",
+  "Roller Disco": "Roller Disco",
+  "Jukebox": "Jukebox",
+  "Sunscreen": "Sunscreen",
+  "Banana Split": "Banana Split",
+  "KMRT Radio": "KMRT Radio",
+
   "About": "About",
   "Licenses": "Licenses",
   "Send Feedback": "Send Feedback",
@@ -26,5 +35,10 @@
   "Open Source": "Open Source",
   "React Native Icon": "React Native Icon",
   "JavaScript Icon": "JavaScript Icon",
-  "Made with ❤️ in Dayton, Ohio": "Made with ❤️ in Dayton, Ohio"
+  "Made with ❤️ in Dayton, Ohio": "Made with ❤️ in Dayton, Ohio",
+
+  "About1": "The KMRT Radio App streams audio originally played in a major American department store during the Early 90s.",
+  "About2": "Similar to the in-store experience, you cannot scrub these audio tracks. You can only jump around to different time eras.",
+  "About3": "Some months had different tapes for different weeks, and you can skip forward between weeks using the next and previous options, when available.",
+  "About4": "All Audio is sourced from and streams from the Internet Archive."
 }

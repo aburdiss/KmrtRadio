@@ -56,7 +56,7 @@ export default function HomePage({ setScreenPage }: any) {
         style={styles.fauxApp}
         onPress={() => {
           Linking.openURL(
-            'mailto:aburdiss@icloud.com?subject=Kmrt%20Radio%20Feedback',
+            'mailto:kmrtradio@alexanderburdiss.com?subject=KMRT%20Radio%20Feedback',
           );
         }}
       >
