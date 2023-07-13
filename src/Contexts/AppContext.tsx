@@ -116,9 +116,7 @@ function appReducer(
         trackIndex: action.trackIndex,
       };
     case ACTIONS.SET_THEME:
-      if (action.theme) {
-        save({ theme: action.theme });
-      }
+      save({ theme: action.theme });
       return {
         ...state,
         theme: action.theme,
