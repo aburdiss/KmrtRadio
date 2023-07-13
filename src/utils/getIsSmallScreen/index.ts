@@ -8,11 +8,11 @@ import { Dimensions } from 'react-native';
  * @returns {boolean} A boolean of whether or not the screen is small.
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 5/22/23
- * @version 1.0.0
+ * @since 7/13/23
+ * @version 1.0.1
  */
 export function getIsSmallScreen() {
-  const SMALL_SCREEN_HEIGHT = 675;
+  const SMALL_SCREEN_HEIGHT = 850;
   // KMRT Radio always has Portrait orientation
   return Dimensions.get('screen').height < SMALL_SCREEN_HEIGHT;
 }
