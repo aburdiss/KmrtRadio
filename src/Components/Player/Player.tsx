@@ -36,7 +36,7 @@ import { getIsTinyScreen } from '../../utils/getIsTinyScreen';
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/14/23
+ * @since 7/14/23
  * @version 1.1.0
  */
 export default function Player() {
@@ -80,6 +80,9 @@ export default function Player() {
       padding: SMALL_SCREEN ? 0 : 16,
       backgroundColor: SMALL_SCREEN ? undefined : colors.electronicLight,
     },
+    picker: {
+      color: colors.text,
+    },
     pickerContainer: {
       flexDirection: 'row',
       marginVertical: TINY_SCREEN ? -16 : 0,
@@ -96,6 +99,7 @@ export default function Player() {
       textShadowColor: colors.cassetteTape,
       textShadowOffset: { width: 1, height: 1 },
       textShadowRadius: 2,
+      color: colors.text,
     },
     screen: {
       marginVertical: TINY_SCREEN ? 0 : 8,
@@ -197,7 +201,9 @@ export default function Player() {
         <View style={styles.pickerContainer}>
           <View style={styles.pickerMonth}>
             <Picker
+              style={styles.picker}
               selectedValue={state.month}
+              dropdownIconColor={colors.text}
               onValueChange={(itemValue) => {
                 dispatch({
                   type: ACTIONS.SET_MONTH_AND_YEAR,
@@ -219,6 +225,8 @@ export default function Player() {
           </View>
           <View style={styles.pickerYear}>
             <Picker
+              style={styles.picker}
+              dropdownIconColor={colors.text}
               selectedValue={state.year}
               onValueChange={(itemValue) =>
                 dispatch({ type: ACTIONS.SET_YEAR, year: itemValue })

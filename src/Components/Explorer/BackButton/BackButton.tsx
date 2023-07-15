@@ -19,7 +19,7 @@ import { translate } from '../../../translations/TranslationModel';
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/16/23
+ * @since 7/14/23
  * @version 1.0.0
  */
 export default function BackButton({ onPress }: any) {
@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
   text: {
     paddingLeft: 8,
     fontSize: 18,
+    color: colors.text,
   },
 });

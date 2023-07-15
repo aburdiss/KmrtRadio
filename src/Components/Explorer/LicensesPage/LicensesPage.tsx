@@ -12,6 +12,7 @@ import data from './licenses.json';
 
 import { getLicenseData } from '../utils/getLicenseData';
 import { translate } from '../../../translations/TranslationModel';
+import { colors } from '../../../Model/Model';
 
 const licenseData = getLicenseData(data);
 
@@ -27,7 +28,7 @@ const licenseData = getLicenseData(data);
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/16/23
+ * @since 7/14/23
  * @version 1.0.0
  */
 export default function LicensesPage({ setScreenPage }: any) {
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 20,
+    color: colors.text,
   },
   list: {
     flex: 1,

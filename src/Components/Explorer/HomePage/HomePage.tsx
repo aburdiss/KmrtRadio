@@ -22,8 +22,8 @@ import { getAppStoreLink } from '../../../utils/getAppStoreLink';
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/16/23
- * @version 1.0.0
+ * @since 7/14/23
+ * @version 1.0.1
  */
 export default function HomePage({ setScreenPage }: any) {
   return (
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
   fauxAppText: {
     paddingLeft: 8,
     fontSize: 18,
+    color: colors.text,
   },
   javascriptBackground: {
     backgroundColor: colors.white,
@@ -140,5 +141,6 @@ const styles = StyleSheet.create({
   },
   footerText: {
     paddingTop: 10,
+    color: colors.text,
   },
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Player from '../../Components/Player/Player';
+import { StyleSheet, View } from 'react-native';
 
 /**
  * @function Home
@@ -15,5 +16,20 @@ import Player from '../../Components/Player/Player';
  * @version 1.1.0
  */
 export default function Home() {
-  return <Player />;
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: 'center',
+    },
+    inner: {
+      width: '100%',
+      maxWidth: 420,
+    },
+  });
+  return (
+    <View style={styles.container}>
+      <View style={styles.inner}>
+        <Player />
+      </View>
+    </View>
+  );
 }

@@ -31,7 +31,7 @@ import { colors } from '../../../../Model/Model';
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/16/23
+ * @since 7/14/23
  * @version 1.0.0
  *
  * @example
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: 'bold',
     fontSize: 16,
+    color: colors.text,
   },
   image: {
     aspectRatio: 1,
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 3,
+    color: colors.text,
   },
   textContainer: {
     maxWidth: '75%',

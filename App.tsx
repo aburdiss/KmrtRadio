@@ -39,8 +39,8 @@ setI18nConfig();
  *
  * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 1/5/23
- * @version 0.0.1
+ * @since 7/14/23
+ * @version 1.0.2
  */
 export default function App() {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    paddingVertical: 20,
   },
   keyboard: {
     flexDirection: 'row',

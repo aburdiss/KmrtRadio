@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'center',
   },
-  text: {},
+  text: {
+    color: colors.text,
+  },
   view: {
     position: 'relative',
     height: 40,

@@ -25,63 +25,68 @@ import { translate } from '../../translations/TranslationModel';
 export default function Themes() {
   const { state, dispatch } = useContext(AppContext);
   return (
-    <View style={styles.container}>
-      <View style={styles.containerInner}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{translate('Tape Collection')}</Text>
-        </View>
-        <ScrollView style={styles.scrollview}>
-          <View style={styles.scrollviewInner}>
-            <CassetteBoxTop
-              label={translate('Dept Store')}
-              color={colors.primary0}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.KMRT });
-              }}
-              active={state.theme === THEMES.KMRT}
-            />
-            <CassetteBoxTop
-              label={translate('Ice Water')}
-              color={'#0CCDDB'}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JAZZ });
-              }}
-              active={state.theme === THEMES.JAZZ}
-            />
-            <CassetteBoxTop
-              label={translate('Roller Disco')}
-              color={'#E433D0'}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.NEON });
-              }}
-              active={state.theme === THEMES.NEON}
-            />
-            <CassetteBoxTop
-              label={translate('Jukebox')}
-              color={'#DE5433'}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JUKEBOX });
-              }}
-              active={state.theme === THEMES.JUKEBOX}
-            />
-            <CassetteBoxTop
-              label={translate('Sunscreen')}
-              color={'#f9ff9b'}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.SUMMER });
-              }}
-              active={state.theme === THEMES.SUMMER}
-            />
-            <CassetteBoxTop
-              label={translate('Banana Split')}
-              color={'#F1A9BE'}
-              onPress={() => {
-                dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.ICE_CREAM });
-              }}
-              active={state.theme === THEMES.ICE_CREAM}
-            />
+    <View style={styles.containerOuter}>
+      <View style={styles.container}>
+        <View style={styles.containerInner}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{translate('Tape Collection')}</Text>
           </View>
-        </ScrollView>
+          <ScrollView style={styles.scrollview}>
+            <View style={styles.scrollviewInner}>
+              <CassetteBoxTop
+                label={translate('Dept Store')}
+                color={colors.primary0}
+                onPress={() => {
+                  dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.KMRT });
+                }}
+                active={state.theme === THEMES.KMRT}
+              />
+              <CassetteBoxTop
+                label={translate('Ice Water')}
+                color={'#0CCDDB'}
+                onPress={() => {
+                  dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JAZZ });
+                }}
+                active={state.theme === THEMES.JAZZ}
+              />
+              <CassetteBoxTop
+                label={translate('Roller Disco')}
+                color={'#E433D0'}
+                onPress={() => {
+                  dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.NEON });
+                }}
+                active={state.theme === THEMES.NEON}
+              />
+              <CassetteBoxTop
+                label={translate('Jukebox')}
+                color={'#DE5433'}
+                onPress={() => {
+                  dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.JUKEBOX });
+                }}
+                active={state.theme === THEMES.JUKEBOX}
+              />
+              <CassetteBoxTop
+                label={translate('Sunscreen')}
+                color={'#f9ff9b'}
+                onPress={() => {
+                  dispatch({ type: ACTIONS.SET_THEME, theme: THEMES.SUMMER });
+                }}
+                active={state.theme === THEMES.SUMMER}
+              />
+              <CassetteBoxTop
+                label={translate('Banana Split')}
+                color={'#F1A9BE'}
+                onPress={() => {
+                  dispatch({
+                    type: ACTIONS.SET_THEME,
+                    theme: THEMES.ICE_CREAM,
+                  });
+                }}
+                active={state.theme === THEMES.ICE_CREAM}
+              />
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -98,6 +103,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 6,
     borderRightColor: colors.electronicLight,
     borderBottomColor: colors.electronicLight,
+    maxWidth: 420,
+    width: '100%',
   },
   containerInner: {
     backgroundColor: shadeHexColor(colors.black, 0.25),
@@ -106,6 +113,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: 6,
     borderLeftColor: colors.black,
     height: '100%',
+  },
+  containerOuter: {
+    alignItems: 'center',
   },
   scrollview: {
     padding: 16,
