@@ -19,9 +19,10 @@ import More from './src/Screens/More/More';
 import { setI18nConfig, translate } from './src/translations/TranslationModel';
 
 import { getTracks } from './src/utils/getTracks';
+import { isIos } from './src/utils/isIos';
+import AppBackground from './src/BaseComponents/AppBackground/AppBackground';
 import NavigationButton from './src/Components/NavigationButton/NavigationButton';
 import { AppContext } from './src/Contexts/AppContext';
-import AppBackground from './src/BaseComponents/AppBackground/AppBackground';
 import { colors } from './src/Model/Model';
 import { THEMES } from './src/Model/themes';
 
@@ -96,18 +97,20 @@ export default function App() {
   return (
     <>
       <AppBackground />
-      <StatusBar
-        barStyle={
-          {
-            [THEMES.KMRT]: DARK_STATUS_BAR,
-            [THEMES.JAZZ]: DARK_STATUS_BAR,
-            [THEMES.NEON]: LIGHT_STATUS_BAR,
-            [THEMES.JUKEBOX]: DARK_STATUS_BAR,
-            [THEMES.SUMMER]: DARK_STATUS_BAR,
-            [THEMES.ICE_CREAM]: DARK_STATUS_BAR,
-          }[state.theme ?? THEMES.KMRT] as StatusBarStyle
-        }
-      />
+      {isIos() && (
+        <StatusBar
+          barStyle={
+            {
+              [THEMES.KMRT]: DARK_STATUS_BAR,
+              [THEMES.JAZZ]: DARK_STATUS_BAR,
+              [THEMES.NEON]: LIGHT_STATUS_BAR,
+              [THEMES.JUKEBOX]: DARK_STATUS_BAR,
+              [THEMES.SUMMER]: DARK_STATUS_BAR,
+              [THEMES.ICE_CREAM]: DARK_STATUS_BAR,
+            }[state.theme ?? THEMES.KMRT] as StatusBarStyle
+          }
+        />
+      )}
       <SafeAreaView style={styles.container}>
         <View style={styles.navigationButtonsContainer}>
           <View style={styles.keyboard}>

@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   },
   containerOuter: {
     alignItems: 'center',
+    padding: 16,
   },
   scrollview: {
     padding: 16,

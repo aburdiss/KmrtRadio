@@ -67,6 +67,7 @@ export default function Cassette({
   const styles = StyleSheet.create({
     bottomText: {
       textAlign: 'center',
+      color: colors.text,
     },
     bottomTextContainer: {},
     cassetteBottom: {
@@ -289,6 +290,7 @@ export default function Cassette({
     topText: {
       textAlign: 'right',
       fontSize: 6,
+      color: colors.text,
     },
     topTextContainer: {
       paddingTop: 12,
